@@ -1,0 +1,82 @@
+/**
+Allgemein
+ */
+body {
+    font-size: 30px;
+    margin: 50px auto;
+    padding: 0;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Gesamter Main Block */
+#main {
+    max-width: 90%;
+    margin: 0 auto;
+
+    /*background-color: gray;*/
+}
+
+/* Wrapper für den Block der Überschriften Arbeitsplan und Anmelden */
+#ueberschriftwrapper {
+    text-align: center;
+    padding: 20px;
+
+    /*background-color: yellow;*/
+}
+
+/* Überschrift Arbeitsplan */
+#logo-Arbeitsplan {
+    font-size: 3em;
+    color: #1f42d4;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+/* Überschrift Anmelden */
+#logo-Anmelden {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+/* Wrapper für den Eingabe Block */
+#eingabewrapper {
+    text-align: center;
+
+    /*background-color: green;*/
+}
+
+/* Eingabe für Benutzername und Passwort */
+.username, .password {
+    font-size: 0.8em;
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 10px auto;
+}
+
+/* Test für das Auswählen des Textfeldes */
+.username:focus {
+    border-color: #399BFF;
+}
+
+/* Login Button  */
+.button {
+    width: 200px;
+    height: 50px;
+    font-size: 0.9em;
+    background-color: #1f42d4;
+    font-weight: bold;
+    color: #f1f3f8;
+    border-radius: 30px;
+    border: black 2px solid;
+    margin-top: 40px;
+}
+
+/* Login Button Hover Funktion */
+.button:hover {
+    background-color: #399BFF;
+    color: #f1f3f8;
+    cursor: pointer;
+}
