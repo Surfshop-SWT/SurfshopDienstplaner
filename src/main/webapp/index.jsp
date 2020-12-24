@@ -28,10 +28,8 @@
         <div id="eingabewrapper">
             <input type="text" name="username" class="username" placeholder="Benutzername"><br>
             <input type="password" name="password" class="password" placeholder="Passwort"><br>
-            <button id="login" type="submit" name="submit" class="button">Login</button>
-            <br>
-            <p style="color: green;">${successMessage}</p>
             <p style="color: red;">${errorMessage}</p>
+            <button id="login" type="submit" name="submit" class="button">Login</button>
         </div>
     </form>
 </div>

@@ -1,6 +1,6 @@
 package com.dienstplaner.SurfshopDienstplaner;
 
-import test.LoginTest;
+import Model.Benutzer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import java.io.IOException;
 public class login extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LoginTest user = new LoginTest();
+        Benutzer user = new Benutzer();
 
         if (user.isValid(request.getParameter("username"), request.getParameter("password"))) {
             request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);

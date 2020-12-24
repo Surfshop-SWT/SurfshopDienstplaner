@@ -13,7 +13,9 @@
 <body>
 <!-- Main Block -->
 <div id="main">
-    <form>
+
+    <!-- Form zum Eingeben der Daten und dann zum Servlet senden -->
+    <form action="benutzerAnlegen" method="post" accept-charset="utf-8">
 
 
         <!-- Überschriften Block -->
