@@ -1,4 +1,4 @@
-package com.dienstplaner.SurfshopDienstplaner;
+package Controller;
 
 import Model.Benutzer;
 
