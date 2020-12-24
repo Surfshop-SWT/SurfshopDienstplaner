@@ -13,6 +13,10 @@ import java.util.List;
  * User: Tim Lueneburg
  * Date: 24.12.2020
  */
+
+/**
+ * Kommunikation mit der DB für den {@link Benutzer} über {@link DAO}
+ */
 public class BenutzerDAO implements DAO<Benutzer> {
 
     /**
