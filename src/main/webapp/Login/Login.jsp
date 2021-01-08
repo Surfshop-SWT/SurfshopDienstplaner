@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Dienstplan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${pageContext.request.contextPath}Login/Login.css"
+    <link href="${pageContext.request.contextPath}/Login/Login.css"
           rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -23,11 +23,11 @@
 
 
     <!-- Form zum Eingeben der Daten und dann zum Servlet senden -->
-    <form action="login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <!-- Eingaben Block -->
         <div id="eingabewrapper">
-            <input type="text" name="username" class="username" placeholder="Benutzername"><br>
-            <input type="password" name="password" class="password" placeholder="Passwort"><br>
+            <input type="text" name="username" class="username" placeholder="Benutzername" required><br>
+            <input type="password" name="password" class="password" placeholder="Passwort" required><br>
             <p style="color: red;">${errorMessage}</p>
             <button id="login" type="submit" name="submit" class="button">Login</button>
         </div>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -16,8 +17,8 @@ import java.sql.SQLException;
  * User: Tim Lueneburg
  * Date: 23.12.2020
  */
-@WebServlet(name = "benutzerAnlegen", value = "/benuterAnlegen")
-public class benutzerAnlegen extends HttpServlet {
+@WebServlet(name = "benutzerAnlegen", value = "/benutzerAnlegen")
+public class BenutzerAnlegen extends HttpServlet {
 
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
 
@@ -37,7 +38,11 @@ public class benutzerAnlegen extends HttpServlet {
                 user.setUrlaubstage(Integer.parseInt(request.getParameter("urlaubstage")));
                 user.setBenutzername(request.getParameter("benutzername"));
                 user.setPasswort(request.getParameter("passwort"));
+                user.setArbeitszeit(request.getParameter("arbeitszeit"));
+                user.setAdmin(request.getParameter("benutzerrolle"));
                 benutzerDAO.save(user);
+                request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);
+            } else {
                 request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);
             }
         } catch (SQLException e) {
@@ -47,5 +52,12 @@ public class benutzerAnlegen extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+
+        if (session.getAttribute("username") == null) {
+            response.sendRedirect("Login/Login.jsp");
+        } else {
+            response.sendRedirect("BenutzerAnlegen/BenutzerAnlegen.jsp");
+        }
     }
 }

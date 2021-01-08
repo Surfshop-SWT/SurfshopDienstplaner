@@ -20,32 +20,15 @@ public class Benutzer {
     private String passwort;
     private boolean angemeldet;
     private Arbeitszeit arbeitszeit;
-
-    /**
-     * Funktion zum Testen ob die Login Daten username: Tim und password: 123 entsprechen
-     *
-     * @param username
-     * @param password
-     * @return
-     */
-    public boolean isValid(String username, String password) {
-
-        if (username.equals("Tim") && password.equals("123")) {
-            this.setAngemeldet();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-
+    private boolean admin;
 
 
 
     /*---------------------------- Getter und Setter ----------------------------*/
+
     /**
      * Setzen der BID
+     *
      * @param id
      */
     public void setBid(int id) {
@@ -54,6 +37,7 @@ public class Benutzer {
 
     /**
      * Liefert die BID
+     *
      * @return
      */
     public int getBid() {
@@ -62,6 +46,7 @@ public class Benutzer {
 
     /**
      * Setzen des Vornamen
+     *
      * @param vorname
      */
     public void setVorname(String vorname) {
@@ -70,6 +55,7 @@ public class Benutzer {
 
     /**
      * Liefert den Vornamen
+     *
      * @return
      */
     public String getVorname() {
@@ -78,6 +64,7 @@ public class Benutzer {
 
     /**
      * Setzen des Nachnamen
+     *
      * @param nachname
      */
     public void setNachname(String nachname) {
@@ -86,6 +73,7 @@ public class Benutzer {
 
     /**
      * Leifert den Nachnamen
+     *
      * @return
      */
     public String getNachname() {
@@ -94,6 +82,7 @@ public class Benutzer {
 
     /**
      * Setzen des Benutzernamen
+     *
      * @param benutzername
      */
     public void setBenutzername(String benutzername) {
@@ -102,6 +91,7 @@ public class Benutzer {
 
     /**
      * Liefert den Benutzernamen
+     *
      * @return
      */
     public String getBenutzername() {
@@ -110,6 +100,7 @@ public class Benutzer {
 
     /**
      * Setzen des Passworts
+     *
      * @param passwort
      */
     public void setPasswort(String passwort) {
@@ -118,6 +109,7 @@ public class Benutzer {
 
     /**
      * Liefert das Passwort
+     *
      * @return
      */
     public String getPasswort() {
@@ -126,6 +118,7 @@ public class Benutzer {
 
     /**
      * Setzen der Telefonnummer
+     *
      * @param telefonnummer
      */
     public void setTelefonnummer(String telefonnummer) {
@@ -134,6 +127,7 @@ public class Benutzer {
 
     /**
      * Liefert die Telefonnummer
+     *
      * @return
      */
     public String getTelefonnummer() {
@@ -142,6 +136,7 @@ public class Benutzer {
 
     /**
      * Setzen der E-Mail Adresse
+     *
      * @param eMailAdresse
      */
     public void setEMailadresse(String eMailAdresse) {
@@ -150,6 +145,7 @@ public class Benutzer {
 
     /**
      * Liefert die E-Mail Adresse
+     *
      * @return
      */
     public String getEMailadresse() {
@@ -158,6 +154,7 @@ public class Benutzer {
 
     /**
      * Setzen der Urlaubstage
+     *
      * @param tage
      */
     public void setUrlaubstage(int tage) {
@@ -166,6 +163,7 @@ public class Benutzer {
 
     /**
      * Liefert die Urlaubstage
+     *
      * @return
      */
     public int getUrlaubstage() {
@@ -174,14 +172,20 @@ public class Benutzer {
 
     /**
      * Setzt die Arbeitszeit
+     *
      * @param jobart
      */
-    public void setArbeitszeit(Arbeitszeit jobart) {
-        this.arbeitszeit = jobart;
+    public void setArbeitszeit(String jobart) {
+        if (jobart.equals("vollzeit")) {
+            this.arbeitszeit = Arbeitszeit.VOLLZEIT;
+        } else {
+            this.arbeitszeit = Arbeitszeit.TEILZEIT;
+        }
     }
 
     /**
      * Liefert die Arbeitszeit
+     *
      * @return
      */
     public Arbeitszeit getArbeitszeit() {
@@ -197,10 +201,37 @@ public class Benutzer {
 
     /**
      * Gibt an ob der User Online ist oder nicht
+     *
      * @return
      */
     public boolean getAngemeldet() {
         return angemeldet;
+    }
+
+    /**
+     * Setzen ob der USER ein ADMIN ist oder nicht
+     *
+     * @param role
+     */
+    public void setAdmin(String role) {
+        if (role.equals("chef")) {
+            this.admin = true;
+        } else {
+            this.admin = false;
+        }
+    }
+
+    public void setAdmin(boolean role) {
+        this.admin = role;
+    }
+
+    /**
+     * Liefert ob der USER ein ADMIN ist oder nicht
+     *
+     * @return
+     */
+    public boolean getAdmin() {
+        return this.admin;
     }
 
 }

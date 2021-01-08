@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Dienstplan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${pageContext.request.contextPath}BenutzerAnlegen/BenutzerAnlegen.css"
+    <link href="${pageContext.request.contextPath}/BenutzerAnlegen/BenutzerAnlegen.css"
           rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -15,7 +15,7 @@
 <div id="main">
 
     <!-- Form zum Eingeben der Daten und dann zum Servlet senden -->
-    <form action="benutzerAnlegen" method="post" accept-charset="utf-8">
+    <form action="${pageContext.request.contextPath}/benutzerAnlegen" method="post" accept-charset="utf-8">
 
 
         <!-- Überschriften Block -->

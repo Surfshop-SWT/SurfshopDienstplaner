@@ -10,7 +10,8 @@ DAO muss noch prüfen ob der Benutzername frei ist.
 ### Struktur
 Order Struktur noch anpassen
 
-
+### Ansicht
+Bug das die normal Ansicht.css nicht genommen wird mit der Ansicht2.css geht es
 
 ### Quicksave für MYSQL
 select * from benutzer;

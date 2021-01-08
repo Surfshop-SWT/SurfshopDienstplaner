@@ -20,16 +20,16 @@ import java.util.List;
 public class BenutzerDAO implements DAO<Benutzer> {
 
     /**
-     *  Einfügen eines Neuen Users in die Datenbank
+     * Einfügen eines Neuen Users in die Datenbank
      *
      * @param entity der Benutzer
-     * @return  neu erstellte Benutzer
+     * @return neu erstellte Benutzer
      * @throws SQLException
      */
     @Override
     public Benutzer save(Benutzer entity) throws SQLException {
-        String query = "insert into benutzer(vorname, nachname, emailadresse, telefonnummer, urlaubstage, benutzername, passwort)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into benutzer(vorname, nachname, emailadresse, telefonnummer, urlaubstage, benutzername, passwort, arbeitszeit, chef)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
         ps.setString(1, entity.getVorname());
         ps.setString(2, entity.getNachname());
@@ -38,6 +38,8 @@ public class BenutzerDAO implements DAO<Benutzer> {
         ps.setInt(5, entity.getUrlaubstage());
         ps.setString(6, entity.getBenutzername());
         ps.setString(7, entity.getPasswort());
+        ps.setString(8, entity.getArbeitszeit().name());
+        ps.setBoolean(9, entity.getAdmin());
         ps.executeUpdate();
         return entity;
     }
@@ -51,7 +53,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
     @Override
     public void update(Benutzer entity) throws SQLException {
         String query = "update benutzer set benutzername=?, nachname=?, emailadresse=?, telefonnummer=?, urlaubstage=?, " +
-                "benutzername=?, passwort=?";
+                "benutzername=?, passwort=?, arbeitszeit=?, chef=?";
         PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
         ps.setString(1, entity.getVorname());
         ps.setString(2, entity.getNachname());
@@ -60,6 +62,8 @@ public class BenutzerDAO implements DAO<Benutzer> {
         ps.setInt(5, entity.getUrlaubstage());
         ps.setString(6, entity.getBenutzername());
         ps.setString(7, entity.getPasswort());
+        ps.setString(8, entity.getArbeitszeit().name());
+        ps.setBoolean(9, entity.getAdmin());
         ps.executeUpdate();
     }
 
@@ -89,6 +93,8 @@ public class BenutzerDAO implements DAO<Benutzer> {
             user.setUrlaubstage(rs.getInt("urlaubstage"));
             user.setBenutzername(rs.getString("benutzername"));
             user.setPasswort(rs.getString("passwort"));
+            user.setArbeitszeit(rs.getString("arbeitszeit"));
+            user.setAdmin(rs.getBoolean("chef"));
         }
 
         if (check) {
@@ -115,11 +121,41 @@ public class BenutzerDAO implements DAO<Benutzer> {
     /**
      * Prüft ob der Benutzername bereits vergeben ist oder nicht
      *
-     * @param benutzername
+     * @param username
      * @return true oder false
      */
-    public boolean existsByName(String benutzername) throws SQLException {
+    public boolean existsByName(String username) throws SQLException {
+        String query = "select benutzername from benutzer";
+        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            if (username.equals(rs.getString("benutzername"))) {
+                return true;
+            }
+        }
         return false;
+
+    }
+
+    /**
+     * Prüft ob der Login korrekt ist
+     *
+     * @param username
+     * @return true oder false
+     */
+    public boolean checkLogin(String username, String pw) throws SQLException {
+        String query = "select bid, benutzername, passwort from benutzer";
+        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            if (username.equals(rs.getString("benutzername")) && pw.equals(rs.getString("passwort"))) {
+                return true;
+            }
+        }
+        return false;
+
     }
 
     public List<Benutzer> getAllBenutzer() throws SQLException {
@@ -128,7 +164,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
         ResultSet rs = ps.executeQuery();
         List<Benutzer> list = new ArrayList<>();
 
-        while(rs.next()) {
+        while (rs.next()) {
             Benutzer user = new Benutzer();
             user.setBid(rs.getInt("bid"));
             user.setVorname(rs.getString("vorname"));
@@ -138,6 +174,9 @@ public class BenutzerDAO implements DAO<Benutzer> {
             user.setUrlaubstage(rs.getInt("urlaubstage"));
             user.setBenutzername(rs.getString("benutzername"));
             user.setPasswort(rs.getString("passwort"));
+            user.setArbeitszeit(rs.getString("arbeitszeit"));
+            user.setAdmin(rs.getBoolean("chef"));
+            list.add(user);
         }
         return list;
     }
