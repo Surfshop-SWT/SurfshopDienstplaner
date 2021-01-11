@@ -32,7 +32,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("username", uname);
                 response.sendRedirect("Ansicht/Ansicht.jsp");
             } else {
-                request.setAttribute("errorMessage", "Benutzername oder Passwort sind nicht korrekt!");
+                request.setAttribute("errorMessage", "Benutzername und/oder Passwort ist falsch!");
                 request.getRequestDispatcher("Login/Login.jsp").forward(request, response);
             }
         } catch (SQLException throwables) {
