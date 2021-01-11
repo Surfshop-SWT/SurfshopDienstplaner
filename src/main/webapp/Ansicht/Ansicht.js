@@ -1,3 +1,13 @@
+let personData = [
+    {name: 'Tim Lüneburg', soll: 6, ist: 3},
+    {name: 'Denis Alipkina', soll: 6, ist: 3},
+    {name: 'Filip Krajanovic', soll: 6, ist: 3},
+    {name: 'Simon Nitsch', soll: 6, ist: 3},
+    {name: 'Tim Escher', soll: 6, ist: 3},
+    {name: 'Cheang Siren', soll: 6, ist: 3},
+]
+
+
 /**
  * Funktion zum erstellen der Printview in einem Popup
  * @param areaID
@@ -14,6 +24,10 @@ const date = new Date();
 dateMonth = date.getMonth();
 dateYear = date.getFullYear();
 
+const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
+        "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    Tag = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+
 
 Kalender(dateMonth, dateYear);
 
@@ -24,11 +38,6 @@ Kalender(dateMonth, dateYear);
  * @constructor
  */
 function Kalender(month, year) {
-
-    const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
-            "Juli", "August", "September", "Oktober", "November", "Dezember"],
-        Tag = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
-
 
     const today = new Date();
     let dayToday = -1;
@@ -54,26 +63,109 @@ function Kalender(month, year) {
     }
 }
 
-let sortDirection = false;
-let personData = [
-    {name: 'Tim'},
-    {name: 'Filip'},
-    {name: 'Denis'},
-    {name: 'Simon'}
-
-]
-
 window.onload = () => {
-    createTable(personData);
+    document.getElementById("monatsAnsicht").textContent = months[dateMonth] + " " + dateYear;
+    createTable(dateMonth, dateYear);
+    createSelection(dateMonth);
 }
 
-function createTable(table) {
+/**
+ * Ändert Textfelder für die Monate
+ * @param elementID
+ */
+function selectionOfMonth(elementID) {
+    document.getElementById("monatsAnsicht").textContent = months[elementID] + " " + dateYear;
+    document.getElementById("monatDropDown").textContent = months[elementID];
+    document.getElementById("monat").textContent = months[elementID] + " " + dateYear;
+}
 
-    const tableBody = document.getElementById("tableHeader");
+/**
+ * Funktion zum erstellen der Monats Auswahl
+ * @param month
+ */
+function createSelection(month) {
+    const tableBody = document.getElementById("menu")
     let dataHtml = '';
-    dataHtml += ``
-    dataHtml += `<tr><th class="date">KW1</th><th class="day">Montag</th><th class="day">Dienstag</th><th class="day">Mittwoch</th><th class="day">Freitag</th><th class="day">Samstag</th><th class="day">Sonntag</th><th class="soll">SOLL</th><th class="ist">IST</th></tr>`
+    dataHtml += `<ul>
+                <li class="topmenu selected">
+                    <a id="monatDropDown">${months[month]}</a>
+                    <ul>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(0)">Januar</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(1)">Februar</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(2)">März</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(3)">April</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(4)">Mai</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(5)">Juni</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(6)">Juli</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(7)">August</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(8)">September</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(9)">Oktober</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(10)">November</a></li>
+                        <li class="submenu"><a href="#" onclick="selectionOfMonth(11)">Dezember</a></li>
+                    </ul>
+                </li>
+            </ul>`
     console.log(dataHtml);
     tableBody.innerHTML = dataHtml;
+}
+
+/**
+ * Funktion zum erstellen der Tabelle
+ * @param month
+ * @param year
+ */
+function createTable(month, year) {
+    var week = weeksCount(dateMonth);
+    for (let i = 0; i < 4; i++) {
+        const tableBody = document.getElementById("tableHeader" + i);
+        let dataHtml = '';
+        dataHtml += `<tr><th class="date">KW ${week}</th>
+                    <th class="day">Montag</th>
+                        <th class="day">Dienstag</th>
+                            <th class="day">Mittwoch</th>
+                                <th class="day">Donnerstag</th>
+                                    <th class="day">Freitag</th>
+                                      <th class="day">Samstag</th>
+                                           <th class="day">Sonntag</th>
+                                               <th class="soll">SOLL</th>
+                                                    <th class="ist">IST</th></tr>`;
+        for (let person of personData) {
+            dataHtml += `<tr><td class="mitarbeiter">${person.name}</td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="day"></td>
+                    <td class="soll">${person.soll}</td>
+                    <td class="ist">${person.ist}</td></tr>`;
+        }
+        console.log(dataHtml);
+        tableBody.innerHTML = dataHtml;
+        week++;
+    }
+}
+
+/**
+ * Funktion zum Berechnen der aktuellen Kalenderwoche
+ * @returns {number}
+ * @param elementID
+ */
+function weeksCount(elementID) {
+    // Copy date so don't modify original
+    d = new Date(Date.UTC(dateYear, elementID, 1));
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    // Get first day of year
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    // Calculate full weeks to nearest Thursday
+    var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    // Return array of year and week number
+    if (elementID === 0 && weekNo !== 1) {
+        weekNo = 1;
+    }
+    return weekNo;
 }
 

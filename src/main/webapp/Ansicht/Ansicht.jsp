@@ -31,25 +31,7 @@
 <div class="main">
     <div class="left-main">
         <div id="menu">
-            <ul>
-                <li class="topmenu selected">
-                    <a href="">Dezember</a>
-                    <ul>
-                        <li class="submenu"><a href="">Januar</a></li>
-                        <li class="submenu"><a href="">Februar</a></li>
-                        <li class="submenu"><a href="">März</a></li>
-                        <li class="submenu"><a href="">April</a></li>
-                        <li class="submenu"><a href="">Mai</a></li>
-                        <li class="submenu"><a href="">Juni</a></li>
-                        <li class="submenu"><a href="">Juli</a></li>
-                        <li class="submenu"><a href="">August</a></li>
-                        <li class="submenu"><a href="">September</a></li>
-                        <li class="submenu"><a href="">Oktober</a></li>
-                        <li class="submenu"><a href="">Noveber</a></li>
-                        <li class="submenu selected"><a href="">Dezember</a></li>
-                    </ul>
-                </li>
-            </ul>
+
         </div>
         <div class="temp">
             <p>Hinweis:<br> Für erweiterte Optionen auf den jeweiligen Wochentag klicken</p>
@@ -59,8 +41,29 @@
     <div id="printview" class="right-main">
         <body>
         <table>
+            <caption id="monatsAnsicht"></caption>
             <tr class="table-head">
-            <tbody id="tableHeader"></tbody>
+                <tbody id="tableHeader0"></tbody>
+            </tr>
+        </table>
+        <table>
+            <tr class="table-head">
+                <tbody id="tableHeader1"></tbody>
+            </tr>
+        </table>
+        <table>
+            <tr class="table-head">
+                <tbody id="tableHeader2"></tbody>
+            </tr>
+        </table>
+        <table>
+            <tr class="table-head">
+                <tbody id="tableHeader3"></tbody>
+            </tr>
+        </table>
+        <table>
+            <tr class="table-head">
+                <tbody id="tableHeader4"></tbody>
             </tr>
         </table>
         </body>
