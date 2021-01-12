@@ -1,0 +1,117 @@
+body {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+.header {
+    margin-top:-20px;
+    background-color: #645ff8;
+    padding: 22px 20px 30px 20px;
+    height:36px;
+    width:100%;
+    position: fixed;
+}
+.arbeitsplan,
+.benutzer,
+.benutzerkonto,
+.logout {
+    padding-top:20px;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    width: 15%;
+    margin-right:5%;
+    height:20px;
+    color:white;
+}
+.logout {
+    float: right;
+    margin-right:1%;
+}
+.knopf {
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color:white;
+}
+
+.choosen {
+    color: #1a1a1a;
+}
+.left-main {
+
+    float:left;
+    margin-top:80px;
+    width: 15%;
+    margin-left:20px;
+}
+.main {
+    float:right;
+    margin-top:80px;
+    width:80%;
+}
+
+table {
+    width:100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: #f3f3f3;
+    margin-bottom: 20px;
+}
+
+th {
+    text-align:center;
+    border:2px solid black;
+    border-collapse: collapse;
+}
+td {
+    text-align:left;
+    background-color: #ffffff;
+    border:1px solid black;
+    border-collapse: collapse;
+}
+td:nth-child(odd) {
+    background-color: #e6f1f3;
+}
+
+
+.vollzeit:before {
+    content: "Vollzeit";
+}
+.teilzeit:before {
+    content: "Teilzeit";
+}
+.mitarbeiter:before {
+    content: "Mitarbeiter";
+}
+.chef:before {
+    content: "Chef";
+}
+
+/* Button Design für Abbrechen und Bestätigen */
+.button {
+    width: 90%;
+    height: 50px;
+    font-size: 15px;
+    background-color: #1f42d4;
+    font-weight: bold;
+    color: #f1f3f8;
+    border-radius: 30px;
+    border: #000000 2px solid;
+    margin-left:30px;
+    margin-bottom:30px;
+}
+
+/* Hover Funktion ändern der Farbe und Pointer */
+.button:hover {
+    background-color: #399BFF;
+    color: #f1f3f8;
+    cursor: pointer;
+}

@@ -1,13 +1,3 @@
-let personData = [
-    {name: 'Tim Lüneburg', soll: 6, ist: 3},
-    {name: 'Denis Alipkina', soll: 6, ist: 3},
-    {name: 'Filip Krajanovic', soll: 6, ist: 3},
-    {name: 'Simon Nitsch', soll: 6, ist: 3},
-    {name: 'Tim Escher', soll: 6, ist: 3},
-    {name: 'Cheang Siren', soll: 6, ist: 3},
-]
-
-
 /**
  * Funktion zum erstellen der Printview in einem Popup
  * @param areaID
@@ -115,6 +105,7 @@ function createSelection(month) {
  * @param year
  */
 function createTable(month, year) {
+
     var week = weeksCount(dateMonth);
     for (let i = 0; i < 4; i++) {
         const tableBody = document.getElementById("tableHeader" + i);
@@ -129,18 +120,7 @@ function createTable(month, year) {
                                            <th class="day">Sonntag</th>
                                                <th class="soll">SOLL</th>
                                                     <th class="ist">IST</th></tr>`;
-        for (let person of personData) {
-            dataHtml += `<tr><td class="mitarbeiter">${person.name}</td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="day"></td>
-                    <td class="soll">${person.soll}</td>
-                    <td class="ist">${person.ist}</td></tr>`;
-        }
+
         console.log(dataHtml);
         tableBody.innerHTML = dataHtml;
         week++;

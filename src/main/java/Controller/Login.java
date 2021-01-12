@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.BenutzerDAO;
+import Model.Benutzer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
  * User: Tim Lueneburg
  * Date: 23.12.2020
  */
-@WebServlet(name = "login", value="/login")
+@WebServlet(name = "login", value = "/login")
 public class Login extends HttpServlet {
 
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
@@ -30,7 +32,9 @@ public class Login extends HttpServlet {
             if (benutzerDAO.checkLogin(uname, pass)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", uname);
-                response.sendRedirect("Ansicht/Ansicht.jsp");
+                List<Benutzer> user = benutzerDAO.getAllBenutzer();
+                request.setAttribute("benutzer", user);
+                request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } else {
                 request.setAttribute("errorMessage", "Benutzername und/oder Passwort ist falsch!");
                 request.getRequestDispatcher("Login/Login.jsp").forward(request, response);

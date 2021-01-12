@@ -180,7 +180,7 @@ public class Benutzer {
      * @param jobart
      */
     public void setArbeitszeit(String jobart) {
-        if (jobart.equals("vollzeit")) {
+        if (jobart.equalsIgnoreCase("vollzeit")) {
             this.arbeitszeit = Arbeitszeit.VOLLZEIT;
         } else {
             this.arbeitszeit = Arbeitszeit.TEILZEIT;
@@ -236,6 +236,11 @@ public class Benutzer {
      */
     public boolean getAdmin() {
         return this.admin;
+    }
+
+    public String getRolle() {
+        if (this.admin) return "Chef";
+        else return "Mitarbeiter";
     }
 
 }

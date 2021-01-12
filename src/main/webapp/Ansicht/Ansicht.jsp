@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,9 @@
 
 <div class="header">
     <div class="arbeitsplan"><input class="knopf choosen" type="submit" value="ARBEITSPLANANSICHT"></div>
+    <form action="${pageContext.request.contextPath}/benutzerubersicht" method="get" accept-charset="utf-8">
     <div class="benutzer"><input class="knopf" type="submit" value="BENUTZERÜBERSICHT"></div>
+    </form>
     <div class="benutzerkonto"><input class="knopf" type="submit" value="BENUTZERKONTO"></div>
     <form action="${pageContext.request.contextPath}/logout" method="get">
         <div class="logout"><input class="knopf" type="submit" value="ABMELDEN"></div>
@@ -44,21 +47,73 @@
             <caption id="monatsAnsicht"></caption>
             <tr class="table-head">
                 <tbody id="tableHeader0"></tbody>
+                <c:forEach var="user" items="${benutzer}">
+            <tr>
+                <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="soll"></td>
+                <td class="ist"></td></tr>
+            </c:forEach>
             </tr>
         </table>
         <table>
             <tr class="table-head">
                 <tbody id="tableHeader1"></tbody>
+                <c:forEach var="user" items="${benutzer}">
+            <tr>
+                <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="soll"></td>
+                <td class="ist"></td></tr>
+            </c:forEach>
             </tr>
         </table>
         <table>
             <tr class="table-head">
                 <tbody id="tableHeader2"></tbody>
+                <c:forEach var="user" items="${benutzer}">
+            <tr>
+                <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="soll"></td>
+                <td class="ist"></td></tr>
+            </c:forEach>
             </tr>
         </table>
         <table>
             <tr class="table-head">
                 <tbody id="tableHeader3"></tbody>
+                <c:forEach var="user" items="${benutzer}">
+            <tr>
+                <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="day"></td>
+                <td class="soll"></td>
+                <td class="ist"></td></tr>
+            </c:forEach>
             </tr>
         </table>
         <table>

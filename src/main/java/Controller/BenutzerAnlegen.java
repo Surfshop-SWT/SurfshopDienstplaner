@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -41,7 +42,9 @@ public class BenutzerAnlegen extends HttpServlet {
                 user.setArbeitszeit(request.getParameter("arbeitszeit"));
                 user.setAdmin(request.getParameter("benutzerrolle"));
                 benutzerDAO.save(user);
-                request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);
+                List<Benutzer> users = benutzerDAO.getAllBenutzer();
+                request.setAttribute("benutzer", users);
+                request.getRequestDispatcher("Benutzerubersicht/Benutzerubersicht.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);
             }

@@ -1,6 +1,7 @@
 package Controller;
 
-import org.json.JSONArray;
+import DAO.BenutzerDAO;
+import Model.Benutzer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,6 +20,8 @@ import java.io.IOException;
  */
 @WebServlet(name = "ansicht", value = "/ansicht")
 public class Ansicht extends HttpServlet {
+
+    private final BenutzerDAO benutzerDAO = new BenutzerDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,8 +34,15 @@ public class Ansicht extends HttpServlet {
         if (session.getAttribute("username") == null) {
             response.sendRedirect("Login/Login.jsp");
         } else {
-            JSONArray transferArray = new JSONArray();
-            response.sendRedirect("Ansicht/Ansicht.jsp");
+
+            try {
+                List<Benutzer> user = benutzerDAO.getAllBenutzer();
+                System.out.println(user.isEmpty());
+                request.setAttribute("benutzer", user);
+                request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 }
