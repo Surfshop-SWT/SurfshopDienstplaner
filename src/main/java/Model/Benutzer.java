@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Tim Lueneburg
@@ -21,6 +23,8 @@ public class Benutzer {
     private boolean angemeldet;
     private Arbeitszeit arbeitszeit;
     private boolean admin;
+
+    private List<Tag> tag;
 
 
 

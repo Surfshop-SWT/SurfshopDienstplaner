@@ -1,5 +1,7 @@
 package Controller;
 
+import org.json.JSONArray;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +29,7 @@ public class Ansicht extends HttpServlet {
         if (session.getAttribute("username") == null) {
             response.sendRedirect("Login/Login.jsp");
         } else {
+            JSONArray transferArray = new JSONArray();
             response.sendRedirect("Ansicht/Ansicht.jsp");
         }
     }

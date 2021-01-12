@@ -15,7 +15,7 @@ public class DatabaseConnection {
 
     static
     {
-        String url = "jdbc:mysql://localhost:3306/surfshop";
+        String url = "jdbc:mysql://localhost:3306/dienstplaner";
         String user = "root";
         String pass = "h@QKz&&A^K!8mAc5&LYJHvN4iRv!AF";
         try {
