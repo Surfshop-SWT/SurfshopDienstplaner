@@ -55,6 +55,7 @@ body {
 .main {
     float:right;
     margin-top:80px;
+    margin-right: 10px;
     width:80%;
 }
 
@@ -114,4 +115,13 @@ td:nth-child(odd) {
     background-color: #399BFF;
     color: #f1f3f8;
     cursor: pointer;
+}
+
+.benutzername,
+.arbeitszeit,
+.rolle {
+    width:7%;
+}
+.urlaub {
+    width:2%;
 }

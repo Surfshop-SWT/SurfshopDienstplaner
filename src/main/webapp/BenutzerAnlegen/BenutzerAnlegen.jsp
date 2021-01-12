@@ -76,7 +76,7 @@
                 <tr>
                     <td>Benutzerrolle:</td>
                     <td><input type="radio" name="benutzerrolle" value="mitarbeiter" class="radio"
-                               id="mitarbeiter">
+                               id="mitarbeiter" checked="checked">
                         <label for="mitarbeiter">Mitarbeiter</label></td>
                     <td><input type="radio" name="benutzerrolle" value="chef" class="radio" id="chef">
                         <label for="chef">Chef</label></td>
