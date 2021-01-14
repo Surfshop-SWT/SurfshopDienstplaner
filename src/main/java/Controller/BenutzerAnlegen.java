@@ -1,7 +1,9 @@
 package Controller;
 
 import DAO.BenutzerDAO;
+import DAO.TagDAO;
 import Model.Benutzer;
+import Model.Tag;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +25,7 @@ import java.util.List;
 public class BenutzerAnlegen extends HttpServlet {
 
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
+    private final TagDAO tagDAO = new TagDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -42,7 +45,11 @@ public class BenutzerAnlegen extends HttpServlet {
                 user.setPasswort(request.getParameter("passwort"));
                 user.setArbeitszeit(request.getParameter("arbeitszeit"));
                 user.setAdmin(request.getParameter("benutzerrolle"));
-                benutzerDAO.save(user);
+                user.createOneYear();
+                user = benutzerDAO.save(user);
+                for (Tag d : user.getTage()) {
+                    tagDAO.save(d);
+                }
                 List<Benutzer> users = benutzerDAO.getAllBenutzer();
                 request.setAttribute("benutzer", users);
                 request.getRequestDispatcher("Benutzerubersicht/Benutzerubersicht.jsp").forward(request, response);
@@ -52,6 +59,7 @@ public class BenutzerAnlegen extends HttpServlet {
 
                 request.setAttribute("errorMessage", "Benutzername existiert bereits!");
 
+                /* Die Eingebenen Felder an die JSP geben */
                 eingaben.add(request.getParameter("vorname"));
                 eingaben.add(request.getParameter("name"));
                 eingaben.add(request.getParameter("email"));

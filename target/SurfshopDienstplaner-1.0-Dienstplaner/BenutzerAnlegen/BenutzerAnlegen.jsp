@@ -69,7 +69,7 @@
             <table>
                 <tr>
                     <td>Arbeitszeit:</td>
-                    <td><input type="radio" name="arbeitszeit" value="vollzeit" class="radio" id="vollzeit"required>
+                    <td><input type="radio" name="arbeitszeit" value="vollzeit" class="radio" id="vollzeit" required>
                         <label for="vollzeit">Vollzeit</label></td>
                     <td><input type="radio" name="arbeitszeit" value="teilzeit" class="radio" id="teilzeit">
                         <label for="teilzeit">Teilzeit</label><br></td>

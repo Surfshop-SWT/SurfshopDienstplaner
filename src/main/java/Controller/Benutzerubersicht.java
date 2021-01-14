@@ -39,6 +39,7 @@ public class Benutzerubersicht extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /* Den Benutzer Objekt an die JSP geben */
         List<Benutzer> allUser = new LinkedList<>();
         try {
             allUser = benutzerDAO.getAllBenutzer();

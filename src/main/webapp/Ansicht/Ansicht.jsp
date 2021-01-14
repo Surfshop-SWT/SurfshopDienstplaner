@@ -33,9 +33,11 @@
 </div>
 <div class="main">
     <div class="left-main">
+        <form action="${pageContext.request.contextPath}/ansicht" method="post">
         <div id="menu">
 
         </div>
+        </form>
         <div class="temp">
             <p>Hinweis:<br> Für erweiterte Optionen auf den jeweiligen Wochentag klicken</p>
             <button id="drucken" class="button" onclick="printPageArea('printview')">Drucken</button>

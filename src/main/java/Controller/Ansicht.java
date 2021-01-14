@@ -24,7 +24,14 @@ public class Ansicht extends HttpServlet {
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        List<Benutzer> user = null;
+        try {
+            user = benutzerDAO.getAllBenutzer();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        request.setAttribute("benutzer", user);
+        request.getRequestDispatcher("Ansicht/Ansicht.js").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,8 +43,8 @@ public class Ansicht extends HttpServlet {
         } else {
 
             try {
+                /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
-                System.out.println(user.isEmpty());
                 request.setAttribute("benutzer", user);
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } catch (SQLException throwables) {

@@ -5,6 +5,7 @@ import Model.Benutzer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
     public Benutzer save(Benutzer entity) throws SQLException {
         String query = "insert into benutzer(vorname, nachname, emailadresse, telefonnummer, urlaubstage, benutzername, passwort, arbeitszeit, chef)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
+        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, entity.getVorname());
         ps.setString(2, entity.getNachname());
         ps.setString(3, entity.getEMailadresse());
@@ -41,6 +42,10 @@ public class BenutzerDAO implements DAO<Benutzer> {
         ps.setString(8, entity.getArbeitszeit().name());
         ps.setBoolean(9, entity.getAdmin());
         ps.executeUpdate();
+        ResultSet rs = ps.getGeneratedKeys();
+        rs.next();
+        entity.setBid(rs.getInt(1));
+
         return entity;
     }
 

@@ -1,6 +1,10 @@
 package Model;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,7 +29,14 @@ public class Benutzer {
     private boolean admin;
 
     private List<Tag> tag;
+    private List<Kommentar> kommentar;
 
+    public Benutzer() {
+        this.tag = new LinkedList<>();
+        this.kommentar = new LinkedList<>();
+
+
+    }
 
 
     /*---------------------------- Getter und Setter ----------------------------*/
@@ -241,6 +252,23 @@ public class Benutzer {
     public String getRolle() {
         if (this.admin) return "Chef";
         else return "Mitarbeiter";
+    }
+
+    public void createOneYear() {
+        LocalDate startDate = LocalDate.of(2021,1,1);
+        LocalDate endDate = startDate.plusYears(1);
+        List<LocalDate> listofDates = startDate.datesUntil(endDate).collect(Collectors.toList());
+        for (LocalDate d : listofDates) {
+            Tag day = new Tag();
+            day.setBenutzer(this);
+            day.setDatum(Date.valueOf(d));
+            day.setArt("Frei");
+            tag.add(day);
+        }
+    }
+
+    public List<Tag> getTage() {
+        return this.tag;
     }
 
 }

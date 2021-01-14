@@ -12,4 +12,10 @@ public class Woche {
     private int soll;
     private int ist;
     private int anzahlMitarbeiter;
+
+
+    public Woche() {
+
+
+    }
 }

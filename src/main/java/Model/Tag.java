@@ -1,7 +1,6 @@
 package Model;
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,8 +9,45 @@ import java.util.List;
  */
 public class Tag {
 
-    private List<Benutzer> benutzer;
+    private Benutzer benutzer;
     private Date datum;
-    private List<Woche> woche;
+    private Woche woche;
     private TagArt art;
+
+
+
+
+    public void setArt(String kind) {
+        if (kind.equalsIgnoreCase("Arbeit")) {
+            this.art = TagArt.Arbeit;
+        } else if (kind.equalsIgnoreCase("Urlaub")) {
+            this.art = TagArt.Urlaub;
+        } else {
+            this.art = TagArt.Frei;
+        }
+    }
+
+    public TagArt getArt() {
+        return this.art;
+    }
+
+
+
+    public void setDatum(Date date) {
+        this.datum = date;
+    }
+
+    public Date getDatum() {
+        return this.datum;
+    }
+
+
+
+    public void setBenutzer(Benutzer user) {
+        this.benutzer = user;
+    }
+
+    public Benutzer getBenutzer() {
+        return this.benutzer;
+    }
 }

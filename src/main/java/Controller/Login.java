@@ -32,10 +32,12 @@ public class Login extends HttpServlet {
             if (benutzerDAO.checkLogin(uname, pass)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", uname);
+                /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
                 request.setAttribute("benutzer", user);
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } else {
+                /* Fehlermeldung wenn die Logindaten nicht stimmen */
                 request.setAttribute("errorMessage", "Benutzername und/oder Passwort ist falsch!");
                 request.getRequestDispatcher("Login/Login.jsp").forward(request, response);
             }

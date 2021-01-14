@@ -65,6 +65,7 @@ window.onload = () => {
  */
 function selectionOfMonth(elementID) {
     document.getElementById("monatsAnsicht").textContent = months[elementID] + " " + dateYear;
+    createTable(elementID, dateYear);
     document.getElementById("monatDropDown").textContent = months[elementID];
     document.getElementById("monat").textContent = months[elementID] + " " + dateYear;
 }
@@ -106,7 +107,7 @@ function createSelection(month) {
  */
 function createTable(month, year) {
 
-    var week = weeksCount(dateMonth);
+    var week = weeksCount(month);
     for (let i = 0; i < 4; i++) {
         const tableBody = document.getElementById("tableHeader" + i);
         let dataHtml = '';

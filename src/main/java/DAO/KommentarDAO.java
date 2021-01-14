@@ -1,50 +1,33 @@
 package DAO;
 
-import java.util.Date;
+import Model.Kommentar;
+
+import java.sql.SQLException;
 
 /**
  * Created by IntelliJ IDEA.
  * User: Tim Lueneburg
  * Date: 06.01.2021
  */
-public class KommentarDAO {
+public class KommentarDAO implements DAO<Kommentar>{
 
-    private int kid;
-    private String inhalt;
-    private Date datum;
-
-
-    /*---------------------------- Getter und Setter ----------------------------*/
-
-    /**
-     * Setzt den Inhalt des Kommentars
-     * @param kontext
-     */
-    public void setInhalt(String kontext) {
-        this.inhalt = kontext;
+    @Override
+    public Kommentar save(Kommentar entity) throws SQLException {
+        return null;
     }
 
-    /**
-     * Liefert den Inhalt des Kommentars
-     * @return
-     */
-    public String getKontext() {
-        return this.inhalt;
+    @Override
+    public void update(Kommentar entity) throws SQLException {
+
     }
 
-    /**
-     * Setzt den Tag wo das Kommentar gesetzt wurde
-     * @param tag
-     */
-    public void setTag(Date tag) {
-        this.datum = tag;
+    @Override
+    public Kommentar getById(int id) throws SQLException {
+        return null;
     }
 
-    /**
-     * Liefert den Tag des Kommentars
-     * @return
-     */
-    public Date getDataum() {
-        return this.datum;
+    @Override
+    public void delete(Kommentar entity) throws SQLException {
+
     }
 }

@@ -1,6 +1,7 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,7 +14,12 @@ public class Arbeitsplan {
     private Date aktuellesDatum;
     private List<Tag> tage;
 
+    public Arbeitsplan() {
+        this.tage = new LinkedList<>();
+
+    }
+
     public Arbeitsplan monatWaehlen(Date date) {
-        return null;
+        return this;
     }
 }
