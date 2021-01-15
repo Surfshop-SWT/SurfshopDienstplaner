@@ -54,13 +54,13 @@
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
                 <td class="day"></td>
                 <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="soll"></td>
-                <td class="ist"></td></tr>
+                <td class="day urlaub"></td>
+                <td class="day urlaub"></td>
+                <td class="day urlaub"></td>
+                <td class="day urlaub"></td>
+                <td class="day urlaub"></td>
+                <td class="soll">6</td>
+                <td class="ist">4</td></tr>
             </c:forEach>
             </tr>
         </table>
@@ -71,14 +71,14 @@
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
                 <td class="day"></td>
+                <td class="day frei"></td>
+                <td class="day frei"></td>
+                <td class="day frei"></td>
                 <td class="day"></td>
                 <td class="day"></td>
                 <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="soll"></td>
-                <td class="ist"></td></tr>
+                <td class="soll">6</td>
+                <td class="ist">4</td></tr>
             </c:forEach>
             </tr>
         </table>
@@ -95,8 +95,8 @@
                 <td class="day"></td>
                 <td class="day"></td>
                 <td class="day"></td>
-                <td class="soll"></td>
-                <td class="ist"></td></tr>
+                <td class="soll">6</td>
+                <td class="ist">4</td></tr>
             </c:forEach>
             </tr>
         </table>
@@ -113,8 +113,8 @@
                 <td class="day"></td>
                 <td class="day"></td>
                 <td class="day"></td>
-                <td class="soll"></td>
-                <td class="ist"></td></tr>
+                <td class="soll">6</td>
+                <td class="ist">4</td></tr>
             </c:forEach>
             </tr>
         </table>

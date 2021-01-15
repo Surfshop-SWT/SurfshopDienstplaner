@@ -3,7 +3,6 @@ package Controller;
 import DAO.BenutzerDAO;
 import DAO.TagDAO;
 import Model.Benutzer;
-import Model.Tag;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,11 +44,11 @@ public class BenutzerAnlegen extends HttpServlet {
                 user.setPasswort(request.getParameter("passwort"));
                 user.setArbeitszeit(request.getParameter("arbeitszeit"));
                 user.setAdmin(request.getParameter("benutzerrolle"));
-                user.createOneYear();
+/*                user.createOneYear();
                 user = benutzerDAO.save(user);
                 for (Tag d : user.getTage()) {
                     tagDAO.save(d);
-                }
+                }*/
                 List<Benutzer> users = benutzerDAO.getAllBenutzer();
                 request.setAttribute("benutzer", users);
                 request.getRequestDispatcher("Benutzerubersicht/Benutzerubersicht.jsp").forward(request, response);

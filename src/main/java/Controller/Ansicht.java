@@ -31,7 +31,7 @@ public class Ansicht extends HttpServlet {
             throwables.printStackTrace();
         }
         request.setAttribute("benutzer", user);
-        request.getRequestDispatcher("Ansicht/Ansicht.js").forward(request, response);
+        request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

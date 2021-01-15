@@ -84,10 +84,15 @@
                 </tr>
             </table>
             <p style="color: red;">${errorMessage}</p>
-            <button id="abbrechen" type="submit" name="submit" class="button">Abbrechen</button>
+            <a href="${pageContext.request.contextPath}/Ansicht/Ansicht.jsp" id="abbrechen" type="submit" name="submit" class="button">Abbrechen</a>
             <button id="bestätigen" type="submit" name="submit" class="button">Bestätigen</button>
         </div>
     </form>
+    <div class="abbrechen-box">
+        <p class="abbrechen-text">Sicher, dass Sie abbrechen wollen?</p>
+        <button id="ja" type="submit" name="submit" class="button">Ja</button>
+        <button id="nein" type="submit" name="submit" class="button">Nein</button>
+    </div>
 </div>
 </body>
 </html>
