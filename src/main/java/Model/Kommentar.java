@@ -12,6 +12,7 @@ public class Kommentar {
     private int kid;
     private String inhalt;
     private Date datum;
+    private Benutzer benutzer;
 
 
     /*---------------------------- Getter und Setter ----------------------------*/

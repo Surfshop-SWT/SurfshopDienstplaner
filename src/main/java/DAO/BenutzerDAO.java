@@ -42,9 +42,9 @@ public class BenutzerDAO implements DAO<Benutzer> {
         ps.setString(8, entity.getArbeitszeit().name());
         ps.setBoolean(9, entity.getAdmin());
         ps.executeUpdate();
-/*        ResultSet rs = ps.getGeneratedKeys();
+        ResultSet rs = ps.getGeneratedKeys();
         rs.next();
-        entity.setBid(rs.getInt(1));*/
+        entity.setBid(rs.getInt(1));
 
         return entity;
     }

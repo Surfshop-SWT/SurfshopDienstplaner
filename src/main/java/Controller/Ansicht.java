@@ -45,7 +45,6 @@ public class Ansicht extends HttpServlet {
             try {
                 /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
-                request.setAttribute("benutzer", user);
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

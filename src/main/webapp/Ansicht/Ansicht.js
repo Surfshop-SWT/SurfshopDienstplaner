@@ -81,18 +81,18 @@ function createSelection(month) {
                 <li class="topmenu selected">
                     <a id="monatDropDown">${months[month]}</a>
                     <ul>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(0)">Januar</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(1)">Februar</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(2)">März</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(3)">April</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(4)">Mai</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(5)">Juni</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(6)">Juli</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(7)">August</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(8)">September</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(9)">Oktober</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(10)">November</a></li>
-                        <li class="submenu"><a href="" onclick="selectionOfMonth(11)">Dezember</a></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(0)" value="January">Januar</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(1)" value="February">Februar</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(2)" value="March">März</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(3)" value="April">April</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(4)" value="May">Mai</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(5)" value="June">Juni</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(6)" value="July">Juli</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(7)" value="August">August</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(8)" value="September">September</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(9)" value="October">Oktober</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(10)" value="November">November</button></li>
+                        <li class="submenu"><button type="submit" onclick="selectionOfMonth(11)" value="December">Dezember</button></li>
                     </ul>
                 </li>
             </ul>`

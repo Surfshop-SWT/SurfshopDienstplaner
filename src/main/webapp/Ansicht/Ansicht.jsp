@@ -33,9 +33,8 @@
 </div>
 <div class="main">
     <div class="left-main">
-        <form action="${pageContext.request.contextPath}/ansicht" method="post">
+        <form action="${pageContext.request.contextPath}/ansicht" method="get">
         <div id="menu">
-
         </div>
         </form>
         <div class="temp">
