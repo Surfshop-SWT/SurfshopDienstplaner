@@ -134,6 +134,13 @@ td {
     margin-top: 40px;
 }
 
+a {
+    text-decoration: none;
+    padding:7px;
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
 /* Hover Funktion ändern der Farbe und Pointer */
 .button:hover {
     background-color: #399BFF;
@@ -147,14 +154,15 @@ td {
     float: none;
 }
 
-.abbrechen-box{
+#abbrechen-box{
     text-align: center;
     margin:90px auto;
     width:80%;
 }
 
-
-
+#abbrechen-box{
+    display:none;
+}
 
 
 /*-------------------------------- FIXES --------------------------------*/

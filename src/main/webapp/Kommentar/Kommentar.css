@@ -1,0 +1,126 @@
+body {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+.header {
+    margin-top:-20px;
+    background-color: #645ff8;
+    padding: 22px 20px 30px 20px;
+    height:36px;
+    width:100%;
+    position: fixed;
+}
+.arbeitsplan,
+.benutzer,
+.benutzerkonto,
+.logout {
+    padding-top:20px;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    width: 15%;
+    margin-right:5%;
+    height:20px;
+    color:white;
+}
+.logout {
+    float: right;
+    margin-right:1%;
+}
+.knopf {
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color:white;
+}
+
+.choosen {
+    color: #1a1a1a;
+}
+.main {
+    position:absolute;
+    width:100%;
+}
+form,
+.erfolg-box,
+.abbrechen-box{
+    text-align: center;
+    margin:90px auto;
+    width:80%;
+}
+textarea {
+    width:100%;
+    resize: none;
+    height:200px;
+}
+.textwrapper {
+    margin:5px 0;
+    padding:3px;
+}
+
+/* Button Design für Abbrechen und Bestätigen */
+.button {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    background-color: #1f42d4;
+    font-weight: bold;
+    color: #f1f3f8;
+    border-radius: 30px;
+    border: black 2px solid;
+    margin-left:30px;
+    float:right;
+}
+.button[id="ja"],
+.button[id="nein"] {
+    float: none;
+}
+
+/* Hover Funktion ändern der Farbe und Pointer */
+.button:hover {
+    background-color: #399BFF;
+    color: #f1f3f8;
+    cursor: pointer;
+}
+
+#abbrechen,
+#nein{
+    background-color: #c1bfc1;
+}
+
+#abbrechen:hover,
+#nein:hover{
+    background-color: #e2e0e2;
+}
+.max-zeichen {
+    font-size: 11px;
+    float: left;
+    margin-left:10px;
+    margin-top:-10px;
+    color:red;
+}
+.erfolg-box,
+.abbrechen-box{
+    display:none;/*Box ist weg*/
+    display:block;/*Box ist da*/
+}
+.erfolg-text {
+    color: #008507;
+}
+#zurueck {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    border:none;
+    background-color: #ffffff;
+    color: #0066ff;
+}

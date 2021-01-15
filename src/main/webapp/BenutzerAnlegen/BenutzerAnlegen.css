@@ -153,22 +153,6 @@ td {
     width:80%;
 }
 
-#abbrechen,
-#nein{
-    background-color: #c1bfc1;
-}
-
-#abbrechen:hover,
-#nein:hover{
-    background-color: #e2e0e2;
-}
-
-.abbrechen-box{
-    display:none;/*Box ist weg*/
-    display:block;/*Box ist da*/
-    border-style: solid;
-}
-
 
 
 

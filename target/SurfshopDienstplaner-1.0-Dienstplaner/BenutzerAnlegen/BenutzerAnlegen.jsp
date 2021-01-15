@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,7 +8,9 @@
     <meta charset="UTF-8">
     <title>Dienstplan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${pageContext.request.contextPath}/BenutzerAnlegen/BenutzerAnlegen.css"
+    <script src="${pageContext.request.contextPath}/BenutzerAnlegen/Benutzeranlegen.js" type="text/javascript">
+    </script>
+    <link href="${pageContext.request.contextPath}/BenutzerAnlegen/BenutzerAnlegen2.css"
           rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -27,9 +29,12 @@
 
         <!-- Block aller Eingaben -->
         <div class="eingabewrapper">
-            <input id="vorname" type="text" name="vorname" class="forename" placeholder="Vorname" value="${eingaben.get(0)}" required>
-            <input id="name" type="text" name="name" class="name" placeholder="Name" value="${eingaben.get(1)}" required>
-            <input id="email" type="email" name="email" class="email" placeholder="E-Mail-Adresse" value="${eingaben.get(2)}" required>
+            <input id="vorname" type="text" name="vorname" class="forename" placeholder="Vorname"
+                   value="${eingaben.get(0)}" required>
+            <input id="name" type="text" name="name" class="name" placeholder="Name" value="${eingaben.get(1)}"
+                   required>
+            <input id="email" type="email" name="email" class="email" placeholder="E-Mail-Adresse"
+                   value="${eingaben.get(2)}" required>
             <input id="telefonnummer" type="number" name="telefonnummer" class="telefonnummer"
                    placeholder="Telefonnummer" value="${eingaben.get(3)}" required>
 
@@ -84,8 +89,17 @@
                 </tr>
             </table>
             <p style="color: red;">${errorMessage}</p>
-            <button id="abbrechen" type="submit" name="submit" class="button">Abbrechen</button>
-            <button id="bestätigen" type="submit" name="submit" class="button">Bestätigen</button>
+            <div id="yesornowrapper">
+                <button id="abbrechen" type="button" class="button" onclick="cancle()">Abbrechen</button>
+                <button id="bestätigen" type="submit" name="submit" class="button">Bestätigen</button>
+            </div>
+        </div>
+    </form>
+    <form action="${pageContext.request.contextPath}/benutzerubersicht" method="get" accept-charset="utf-8">
+        <div id="abbrechen-box">
+            <p class="abbrechen-text">Sicher, dass Sie abbrechen wollen?</p>
+            <button id="ja" type="submit" name="submit" class="button">Ja</button>
+            <button id="nein" type="button" class="button" onclick="cancle()">Nein</button>
         </div>
     </form>
 </div>

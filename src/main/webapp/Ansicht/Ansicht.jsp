@@ -118,11 +118,6 @@
             </c:forEach>
             </tr>
         </table>
-        <table>
-            <tr class="table-head">
-                <tbody id="tableHeader4"></tbody>
-            </tr>
-        </table>
         </body>
     </div>
 </div>

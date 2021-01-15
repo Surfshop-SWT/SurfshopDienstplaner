@@ -117,10 +117,10 @@ function createTable(month, year) {
                             <th class="day">Mittwoch</th>
                                 <th class="day">Donnerstag</th>
                                     <th class="day">Freitag</th>
-                                      <th class="day">Samstag</th>
-                                           <th class="day">Sonntag</th>
-                                               <th class="soll">SOLL</th>
-                                                    <th class="ist">IST</th></tr>`;
+                                        <th class="day">Samstag</th>
+                                            <th class="day">Sonntag</th>
+                                                 <th class="soll">SOLL</th>
+                                                      <th class="ist">IST</th></tr>`;
 
         console.log(dataHtml);
         tableBody.innerHTML = dataHtml;
