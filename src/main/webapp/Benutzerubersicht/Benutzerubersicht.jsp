@@ -20,7 +20,7 @@
 
 <div class="header">
     <form action="${pageContext.request.contextPath}/ansicht" method="get">
-    <div class="arbeitsplan"><input class="knopf" type="submit" value="ARBEITSPLANANSICHT"></div>
+    <div class="arbeitsplan"><input class="knopf" name="selectmonth" type="submit" value="ARBEITSPLANANSICHT"></div>
     </form>
     <div class="benutzer"><input class="knopf  choosen" type="submit" value="BENUTZERÜBERSICHT"></div>
     <div class="benutzerkonto"><input class="knopf" type="submit" value="BENUTZERKONTO"></div>

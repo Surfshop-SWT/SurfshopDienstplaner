@@ -15,9 +15,9 @@
     <meta charset="UTF-8">
     <title>Dienstplaner</title>
 </head>
-<script src="${pageContext.request.contextPath}/Ansicht/Ansicht.js" type="text/javascript">
+<script src="${pageContext.request.contextPath}/Ansicht/Ansicht2.js" type="text/javascript">
 </script>
-<link href="${pageContext.request.contextPath}/Ansicht/Ansicht2.css"
+<link href="${pageContext.request.contextPath}/Ansicht/Ansicht3.css"
       rel="stylesheet" type="text/css">
 <body>
 
@@ -35,6 +35,25 @@
     <div class="left-main">
         <form action="${pageContext.request.contextPath}/ansicht" method="get">
         <div id="menu">
+            <ul>
+                <li class="topmenu selected">
+                    <a id="monatDropDown">${monat}</a>
+                    <ul>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="0">Januar</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="1">Februar</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="2">März</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="3">April</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="4">Mai</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="5">Juni</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="6">Juli</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="7">August</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="8">September</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="9">Oktober</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="10">November</button></li>
+                        <li class="submenu"><button name="selectmonth" type="submit" value="11">Dezember</button></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         </form>
         <div class="temp">

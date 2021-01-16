@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.BenutzerDAO;
+import Model.Arbeitsplan;
 import Model.Benutzer;
 
 import javax.servlet.ServletException;
@@ -34,7 +35,9 @@ public class Login extends HttpServlet {
                 session.setAttribute("username", uname);
                 /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
+                Arbeitsplan ap = new Arbeitsplan();
                 request.setAttribute("benutzer", user);
+                request.setAttribute("monat", ap.getMonat());
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } else {
                 /* Fehlermeldung wenn die Logindaten nicht stimmen */

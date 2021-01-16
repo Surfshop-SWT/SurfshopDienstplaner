@@ -31,8 +31,6 @@ public class Benutzerubersicht extends HttpServlet {
         //Den Charset für die request setzen damit Umlaute genommen werden (Standard: ISO_8859_1) Wir brauchen UTF-8
         request.setCharacterEncoding("UTF-8");
 
-        Benutzer user = new Benutzer();
-
         request.getRequestDispatcher("BenutzerAnlegen/BenutzerAnlegen.jsp").forward(request, response);
     }
 

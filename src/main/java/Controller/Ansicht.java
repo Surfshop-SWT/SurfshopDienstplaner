@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.BenutzerDAO;
+import Model.Arbeitsplan;
 import Model.Benutzer;
 
 import javax.servlet.ServletException;
@@ -43,8 +44,16 @@ public class Ansicht extends HttpServlet {
         } else {
 
             try {
+                Arbeitsplan ap = new Arbeitsplan();
+                if (request.getParameter("selectmonth").equalsIgnoreCase("Arbeitsplanansicht")) {
+                    request.setAttribute("monat", ap.getMonat());
+                } else {
+                    int month = Integer.parseInt(request.getParameter("selectmonth"));
+                    request.setAttribute("monat", ap.getMonat(month));
+                }
                 /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
+                request.setAttribute("benutzer", user);
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
