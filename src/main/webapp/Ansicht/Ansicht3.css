@@ -53,7 +53,6 @@ a {
     position: fixed;
     margin-top:50px;
     float: left;
-    /*border:2px solid red;*/
     width:20%;
     height:500px;
 }
@@ -124,7 +123,6 @@ td {
     width: 25px;
     border-radius: 50%;
     display: inline-block;
-    background-color: yellow;
     margin-top: -25px;
     margin-left:45px;
 }
@@ -150,11 +148,13 @@ td {
 
 #menu li.topmenu {
     float:left;
+    width:100%;
 }
 
-.topmenu a {
+.topmenu a,
+.topmenu button{
     float:left;
-    width:200px;
+    width:100%;
     text-align:center;
 }
 
@@ -163,8 +163,10 @@ td {
     display:none;
 }
 
-.topmenu a, .submenu a{
-    padding:10px;
+.topmenu a, .submenu a,
+.topmenu button, .submenu button{
+    padding-top:10px;
+    padding-bottom:10px;
     color:black;
     font-weight:bold;
     text-decoration:none;
@@ -173,17 +175,21 @@ td {
     border:1px solid black;
 }
 
-.submenu a{
+.submenu a,
+.submenu button{
     font-size:12px;
-    width:200px;
+    width:100%;
     position:relative;
     clear:both;
     background-color:#ffffff;
     margin-top:-1px;
+    padding-right:22px;
+    padding-left:22px;
 
 }
 
-#menu .submenu a:hover {
+#menu .submenu a:hover,
+#menu .submenu button:hover{
     color:black;
     background-color: #cfe2f3;
 }
@@ -192,7 +198,8 @@ td {
     display:block;
     z-index:500;
 }
-.topmenu .selected a{
+.topmenu .selected a,
+.topmenu .selected button{
     background-color: #d1d4ff;
 }
 
@@ -227,6 +234,7 @@ td {
     color: #f1f3f8;
     cursor: pointer;
 }
+
 .day-menu {
     display:none;
 }

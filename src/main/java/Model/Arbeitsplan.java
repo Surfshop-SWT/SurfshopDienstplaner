@@ -40,4 +40,9 @@ public class Arbeitsplan {
     public String getMonat(int month) {
         return months[month];
     }
+
+/*    public int getKalenderWoche() {
+
+        return;
+    }*/
 }
