@@ -56,6 +56,8 @@ function Kalender(month, year) {
 window.onload = () => {
     if (!new URLSearchParams(window.location.search).has('selectmonth')) {
         createTable(dateMonth);
+    } else if (new URLSearchParams(window.location.search).get('selectmonth') === "ARBEITSPLANANSICHT") {
+        createTable(dateMonth);
     } else {
         createTable(parseInt(new URLSearchParams(window.location.search).get('selectmonth')));
     }
@@ -131,7 +133,7 @@ function createTable(month) {
     if (week < weeksCount(month + 1)) {
         const tableBody2 = document.getElementById("tableHeader4");
         let dataHtml2 = '';
-        dataHtml2 += `<tr><th class="date"">KW ${week}</th>
+        dataHtml2 += `<tr><th class="date">KW ${week}</th>
                     <th class="day day-word">Montag
                         <ul class="day-menu">
                             <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
