@@ -6,7 +6,6 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-
 .header {
     margin-top:-20px;
     background-color: #645ff8;
@@ -48,8 +47,9 @@ body {
 .main {
     position:absolute;
     width:100%;
+    text-align: center;
 }
-form,
+#eingabeboxwrapper,
 .erfolg-box,
 .abbrechen-box{
     text-align: center;
@@ -108,10 +108,10 @@ textarea {
     color:red;
 }
 .erfolg-box,
-.abbrechen-box{
+#abbrechen-box{
     display:none;/*Box ist weg*/
-    display:block;/*Box ist da*/
 }
+
 .erfolg-text {
     color: #008507;
 }

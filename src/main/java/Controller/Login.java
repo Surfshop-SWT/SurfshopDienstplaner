@@ -37,10 +37,12 @@ public class Login extends HttpServlet {
             if (benutzerDAO.checkLogin(uname, pass)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", uname);
-                /* Den Benutzer Objekt an die JSP geben */
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
                 Arbeitsplan ap = new Arbeitsplan();
                 for (Benutzer bn : user) {
+                    if (bn.getBenutzername().equals(uname)) {
+                        session.setAttribute("eingeloggterBenutzer", bn);
+                    }
                     List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
                     List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                     bn.setTage(buffer);

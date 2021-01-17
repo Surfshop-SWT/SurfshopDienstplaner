@@ -5,7 +5,8 @@
   Time: 15:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -13,36 +14,46 @@
     <title>Benutzerübersicht</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<link href="KommentarSetzen.css"
+<script src="${pageContext.request.contextPath}/Kommentar/Kommentar.js" type="text/javascript">
+</script>
+<link href="${pageContext.request.contextPath}/Kommentar/Kommentar3.css"
       rel="stylesheet" type="text/css">
 <body>
 
 <div class="header">
-    <div class="arbeitsplan"><input class="knopf choosen" type="submit" value="ARBEITSPLANANSICHT"></div>
-    <div class="benutzer"><input class="knopf" type="submit" value="BENUTZERÜBERSICHT"></div>
+    <form action="${pageContext.request.contextPath}/ansicht" method="get">
+        <div class="arbeitsplan"><input class="knopf" type="submit" value="ARBEITSPLANANSICHT"></div>
+    </form>
+    <form action="${pageContext.request.contextPath}/benutzerubersicht" method="get">
+        <div class="benutzer"><input class="knopf" type="submit" value="BENUTZERÜBERSICHT"></div>
+    </form>
     <div class="benutzerkonto"><input class="knopf" type="submit" value="BENUTZERKONTO"></div>
-    <div class="logout"><input class="knopf" type="submit" value="ABMELDEN"></div>
+    <form action="${pageContext.request.contextPath}/logout" method="get">
+        <div class="logout"><input class="knopf" type="submit" value="ABMELDEN"></div>
+    </form>
 </div>
 
 <div class="main">
-    <form>
+    <form id="eingabeboxwrapper">
         <div class="textwrapper"><textarea cols="2" rows="10" placeholder="Kommentar setzen..."></textarea></div>
         <p class="max-zeichen">Max. 300 Zeichen</p>
-        <button id="abbrechen" type="submit" name="submit" class="button">Abbrechen</button>
-        <button id="bestaetigen" type="submit" name="submit" class="button">Bestätigen</button>
+        <div id="yesornowrapper">
+            <button id="abbrechen" type="button" name="submit" class="button" onclick="cancleComment()">Abbrechen
+            </button>
+            <button id="bestaetigen" type="submit" name="submit" class="button">Bestätigen</button>
+        </div>
     </form>
     <div class="erfolg-box">
         <p class="erfolg-text">Der Kommentar wurde erfolgreich gesetzt</p>
         <button id="zurueck" type="submit" name="submit">Zurück</button>
     </div>
-    <div class="abbrechen-box">
-        <p class="abbrechen-text">Sicher, dass Sie abbrechen wollen?</p>
-        <button id="ja" type="submit" name="submit" class="button">Ja</button>
-        <button id="nein" type="submit" name="submit" class="button">Nein</button>
-    </div>
-</div>
-
-
+    <form action="${pageContext.request.contextPath}/ansicht" method="get">
+        <div id="abbrechen-box">
+            <p class="abbrechen-text">Sicher, dass Sie abbrechen wollen?</p>
+            <button id="ja" type="submit" class="button">Ja</button>
+            <button id="nein" type="button" class="button" onclick="cancleComment()">Nein</button>
+        </div>
+    </form>
 </div>
 </body>
 </html>

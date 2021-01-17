@@ -51,7 +51,7 @@ public class Ansicht extends HttpServlet {
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
                 Arbeitsplan ap = new Arbeitsplan();
 
-                if (request.getParameter("selectmonth").equalsIgnoreCase("Arbeitsplanansicht")) {
+                if (request.getParameter("selectmonth") == null || request.getParameter("selectmonth").equalsIgnoreCase("Arbeitsplanansicht")) {
                     request.setAttribute("monat", ap.getMonat());
                     for (Benutzer bn : user) {
                         List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);

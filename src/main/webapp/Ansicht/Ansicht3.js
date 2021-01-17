@@ -75,11 +75,13 @@ function createTable(month) {
         let dataHtml = '';
         dataHtml += `<tr><th class="date"">KW ${week}</th>
                     <th class="day day-word">Montag
+                    <form action="kommentar" method="get">
                         <ul class="day-menu">
                             <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
                             <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
                             <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
                         </ul>
+                        </form>
                     </th>
                     <th class="day day-word">Dienstag
                         <ul class="day-menu">
