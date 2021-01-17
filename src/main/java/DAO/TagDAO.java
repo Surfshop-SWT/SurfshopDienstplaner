@@ -1,9 +1,13 @@
 package DAO;
 
+import Model.Benutzer;
 import Model.Tag;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,5 +41,27 @@ public class TagDAO implements DAO<Tag> {
     @Override
     public void delete(Tag entity) throws SQLException {
 
+    }
+
+
+    public List<Tag> getDays(int year, Benutzer user) throws SQLException {
+        String query = "SELECT tid, datum, tagart, benutzer_bid FROM surfshop2.tag " +
+                "JOIN surfshop2.benutzer on benutzer.bid = tag.benutzer_bid " +
+                "WHERE YEAR(datum) =? and benutzer_bid=?";
+        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
+        ps.setInt(1, year);
+        ps.setInt(2, user.getBid());
+        ResultSet rs = ps.executeQuery();
+        List<Tag> list = new ArrayList<>();
+
+        while (rs.next()) {
+            Tag tag = new Tag();
+            tag.setBenutzer(user);
+            tag.setDatum(rs.getDate("datum"));
+            tag.setArt(rs.getString("tagart"));
+            list.add(tag);
+
+        }
+        return list;
     }
 }

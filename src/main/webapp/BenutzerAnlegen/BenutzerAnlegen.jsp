@@ -47,12 +47,12 @@
             <div id="username">
                 <input id="benutzername" type="text" name="benutzername" class="benutzername"
                        placeholder="Benutzername"
-                       value="" required>
+                       value="" onblur= userChange() required>
                 <label id="benutzernameHinweis" for="benutzername">3-16 Zeichen</label>
             </div>
             <div id="password">
                 <input id="passwort" type="password" name="passwort" class="passwort" placeholder="Passwort"
-                       value="" required>
+                       value="" onblur= userChange() required>
                 <label id="passwortHinweis" for="passwort">mind. 4 Zeichen</label>
             </div>
 

@@ -24,7 +24,9 @@
     </form>
     <div class="benutzer"><input class="knopf  choosen" type="submit" value="BENUTZERÜBERSICHT"></div>
     <div class="benutzerkonto"><input class="knopf" type="submit" value="BENUTZERKONTO"></div>
-    <div class="logout"><input class="knopf" type="submit" value="ABMELDEN"></div>
+    <form action="${pageContext.request.contextPath}/logout" method="get">
+    <div class="logout"><input class="knopf"  type="submit" value="ABMELDEN"></div>
+    </form>
 </div>
 
 <div class="left-main">

@@ -1,6 +1,7 @@
 package Model;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,8 +42,25 @@ public class Arbeitsplan {
         return months[month];
     }
 
-/*    public int getKalenderWoche() {
+    public Date getStartDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(aktuellesDatum.toLocalDate().getYear() - 1, aktuellesDatum.toLocalDate().getMonthValue() - 1, 1);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
 
-        return;
-    }*/
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.WEEK_OF_YEAR, weekOfYear);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return new Date(cal.getTimeInMillis());
+    }
+
+    public Date getStartDate(int month) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(aktuellesDatum.toLocalDate().getYear() - 1, month, 1);
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.WEEK_OF_YEAR, weekOfYear);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return new Date(cal.getTimeInMillis());
+    }
 }

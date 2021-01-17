@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <title>Dienstplaner</title>
 </head>
-<script src="${pageContext.request.contextPath}/Ansicht/Ansicht.js" type="text/javascript">
+<script src="${pageContext.request.contextPath}/Ansicht/Ansicht3.js" type="text/javascript">
 </script>
 <link href="${pageContext.request.contextPath}/Ansicht/Ansicht3.css"
       rel="stylesheet" type="text/css">
@@ -94,13 +94,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day urlaub"></td>
-                <td class="day urlaub"></td>
-                <td class="day urlaub"></td>
-                <td class="day urlaub"></td>
-                <td class="day urlaub"></td>
+                <td class="day ">${user.getTage()[0].getDatum()}</td>
+                <td class="day ${user.getTage()[1].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[2].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[3].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[4].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[5].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[6].getArt().toString().toLowerCase()}"></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -113,13 +113,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day"></td>
-                <td class="day frei"></td>
-                <td class="day frei"></td>
-                <td class="day frei"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
+                <td class="day ${user.getTage()[7].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[8].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[9].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[10].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[11].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[12].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[13].getArt().toString().toLowerCase()}"></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -132,13 +132,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
+                <td class="day ${user.getTage()[14].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[15].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[16].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[17].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[18].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[19].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[20].getArt().toString().toLowerCase()}"></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -151,13 +151,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
+                <td class="day ${user.getTage()[21].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[22].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[23].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[24].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[25].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[26].getArt().toString().toLowerCase()}"></td>
+                <td class="day ">${user.getTage()[27].getDatum()}</td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -170,13 +170,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
-                <td class="day"></td>
+                <td class="day ${user.getTage()[28].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[29].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[30].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[31].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[32].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[33].getArt().toString().toLowerCase()}"></td>
+                <td class="day "> ${user.getTage()[34].getDatum()}</td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>

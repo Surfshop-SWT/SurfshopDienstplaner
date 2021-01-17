@@ -67,12 +67,11 @@ window.onload = () => {
  * @param year
  */
 function createTable(month) {
-
     var week = weeksCount(month);
     for (let i = 0; i < 4; i++) {
         const tableBody = document.getElementById("tableHeader" + i);
         let dataHtml = '';
-        dataHtml += `<tr><th class="date">KW ${week}</th>
+        dataHtml += `<tr><th class="date"">KW ${week}</th>
                     <th class="day day-word">Montag
                         <ul class="day-menu">
                             <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
@@ -132,7 +131,7 @@ function createTable(month) {
     if (week < weeksCount(month + 1)) {
         const tableBody2 = document.getElementById("tableHeader4");
         let dataHtml2 = '';
-        dataHtml2 += `<tr><th class="date">KW ${week}</th>
+        dataHtml2 += `<tr><th class="date"">KW ${week}</th>
                     <th class="day day-word">Montag
                         <ul class="day-menu">
                             <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
@@ -200,12 +199,12 @@ function createTable(month) {
  */
 function weeksCount(elementID) {
     // Copy date so don't modify original
-    d = new Date(Date.UTC(dateYear, elementID, 1));
+    d = new Date(Date.UTC(dateYear, elementID, 7));
     // Set to nearest Thursday: current date + 4 - current day number
     // Make Sunday's day number 7
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
     // Get first day of year
-    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    var yearStart = new Date(Date.UTC(dateYear, 0, 1));
     // Calculate full weeks to nearest Thursday
     var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
     // Return array of year and week number

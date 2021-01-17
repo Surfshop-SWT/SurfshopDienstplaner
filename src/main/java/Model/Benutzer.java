@@ -267,6 +267,10 @@ public class Benutzer {
         }
     }
 
+    public void setTage(List<Tag> days) {
+        this.tag = days;
+    }
+
     public List<Tag> getTage() {
         return this.tag;
     }

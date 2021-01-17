@@ -12,3 +12,24 @@ function cancle() {
         div2.style.display = "block";
     }
 }
+
+function userChange()
+{
+    console.log(document.getElementById('benutzername').value.length);
+    if(document.getElementById('benutzername').value.length < 3 || document.getElementById('benutzername').value.length > 16)
+    {
+        if(document.getElementById('benutzername').value.length < 3)
+        {
+            document.getElementById('benutzername').style.borderColor = 'red';
+            alert("Benutzername zu kurz");
+            return false;
+        }
+
+        if(document.getElementById('benutzername').value.length > 16)
+        {
+            document.getElementById('benutzername').style.borderColor = 'red';
+            alert("Benutzername zu lang");
+            return false;
+        }
+    }
+}
