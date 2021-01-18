@@ -48,6 +48,7 @@ body {
     position:absolute;
     width:100%;
     text-align: center;
+    margin-top: 40px;
 }
 #eingabeboxwrapper,
 .erfolg-box,
@@ -93,12 +94,12 @@ textarea {
 
 #abbrechen,
 #nein{
-    background-color: #c1bfc1;
+    background-color: #3f3f40;
 }
 
 #abbrechen:hover,
 #nein:hover{
-    background-color: #e2e0e2;
+    background-color: #807e7e;
 }
 .max-zeichen {
     font-size: 11px;
