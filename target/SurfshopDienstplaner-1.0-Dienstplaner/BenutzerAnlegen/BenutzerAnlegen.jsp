@@ -52,7 +52,7 @@
             </div>
             <div id="password">
                 <input id="passwort" type="password" name="passwort" class="passwort" placeholder="Passwort"
-                       value="" onblur= userChange() required>
+                       value="" onblur= passShort() required>
                 <label id="passwortHinweis" for="passwort">mind. 4 Zeichen</label>
             </div>
 

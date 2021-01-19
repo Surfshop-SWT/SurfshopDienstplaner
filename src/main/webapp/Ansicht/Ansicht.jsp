@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <title>Dienstplaner</title>
 </head>
-<script src="${pageContext.request.contextPath}/Ansicht/Ansicht3.js" type="text/javascript">
+<script src="${pageContext.request.contextPath}/Ansicht/Ansicht4.js" type="text/javascript">
 </script>
 <link href="${pageContext.request.contextPath}/Ansicht/Ansicht3.css"
       rel="stylesheet" type="text/css">

@@ -5,7 +5,7 @@
 function printPageArea(areaID) {
     var printContent = document.getElementById(areaID);
     var WinPrint = window.open('', '', 'width=900,height=650');
-    WinPrint.document.write('<link href="/Ansicht/Ansicht2.css" rel="stylesheet" type="text/css">');
+    WinPrint.document.write('<link href="/Ansicht/Ansicht3.css" rel="stylesheet" type="text/css">');
     WinPrint.document.write(printContent.innerHTML);
 }
 
@@ -73,56 +73,56 @@ function createTable(month) {
     for (let i = 0; i < 4; i++) {
         const tableBody = document.getElementById("tableHeader" + i);
         let dataHtml = '';
-        dataHtml += `<tr><th class="date"">KW ${week}</th>
+        dataHtml += `<tr><th class="date">KW ${week}</th>
                     <th class="day day-word">Montag
                     <form action="kommentar" method="get">
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                         </form>
                     </th>
                     <th class="day day-word">Dienstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Mittwoch
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Donnerstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Freitag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Samstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Sonntag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="soll">SOLL</th>
@@ -138,51 +138,51 @@ function createTable(month) {
         dataHtml2 += `<tr><th class="date">KW ${week}</th>
                     <th class="day day-word">Montag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Dienstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Mittwoch
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Donnerstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Freitag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Samstag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="day day-word">Sonntag
                         <ul class="day-menu">
-                            <li><input class="knopf" name="date" type="submit" value="Kommentar setzen"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf freien Tag"></li>
-                            <li><input class="knopf" name="date" type="submit" value="Anfrage auf Urlaub"></li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Kommentar setzen</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf freien Tag</li>
+                            <li><button class="knopf" name="date" type="submit" value="0">Anfrage auf Urlaub</li>
                         </ul>
                     </th>
                     <th class="soll">SOLL</th>

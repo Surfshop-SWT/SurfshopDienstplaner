@@ -49,7 +49,7 @@
     </div>
     <form action="${pageContext.request.contextPath}/ansicht" method="get">
         <div id="abbrechen-box">
-            <p class="abbrechen-text">Sicher, dass Sie abbrechen wollen?</p>
+            <p class="abbrechen-text">Sicher, dass sie Abbrechen wollen?</p>
             <button id="ja" type="submit" class="button">Ja</button>
             <button id="nein" type="button" class="button" onclick="cancleComment()">Nein</button>
         </div>
