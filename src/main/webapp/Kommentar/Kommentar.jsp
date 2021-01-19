@@ -34,7 +34,7 @@
 </div>
 
 <div class="main">
-    <form id="eingabeboxwrapper">
+    <form id="eingabeboxwrapper" action="${pageContext.request.contextPath}/kommentar" method="post">
         <div class="textwrapper"><label><textarea id="kommentar" name="kommentar" cols="2" rows="10" placeholder="Kommentar setzen..."></textarea></label></div>
         <p class="max-zeichen">Max. 300 Zeichen</p>
         <div id="yesornowrapper">

@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,9 +13,27 @@ public class Kommentar {
     private String inhalt;
     private Date datum;
     private Benutzer benutzer;
+    private int tag_id;
 
 
     /*---------------------------- Getter und Setter ----------------------------*/
+
+    public void setKid(int id) {
+        this.kid = id;
+    }
+
+    public int getKid() {
+        return this.kid;
+    }
+
+    public void setBenutzer(Benutzer user) {
+        this.benutzer = user;
+    }
+
+    public Benutzer getBenutzer() {
+        return this.benutzer;
+    }
+
 
     /**
      * Setzt den Inhalt des Kommentars
@@ -47,5 +65,13 @@ public class Kommentar {
      */
     public Date getDataum() {
         return this.datum;
+    }
+
+    public void setTag_id(int id) {
+        this.tag_id = id;
+    }
+
+    public int getTag_id() {
+        return this.tag_id;
     }
 }

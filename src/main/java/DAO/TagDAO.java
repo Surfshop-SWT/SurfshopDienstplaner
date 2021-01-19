@@ -56,6 +56,7 @@ public class TagDAO implements DAO<Tag> {
 
         while (rs.next()) {
             Tag tag = new Tag();
+            tag.setTid(rs.getInt("tid"));
             tag.setBenutzer(user);
             tag.setDatum(rs.getDate("datum"));
             tag.setArt(rs.getString("tagart"));

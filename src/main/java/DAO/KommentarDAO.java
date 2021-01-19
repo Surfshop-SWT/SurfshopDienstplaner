@@ -1,8 +1,11 @@
 package DAO;
 
 import Model.Kommentar;
+import Model.Tag;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,7 +16,14 @@ public class KommentarDAO implements DAO<Kommentar>{
 
     @Override
     public Kommentar save(Kommentar entity) throws SQLException {
-        return null;
+        String query = "insert into kommentar(inhalt, tag_tid)" +
+                " VALUES (?, ?)";
+        PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
+        ps.setString(1, entity.getKontext());
+        ps.setInt(2, entity.getTag_id());
+        ps.executeUpdate();
+
+        return entity;
     }
 
     @Override
@@ -30,4 +40,9 @@ public class KommentarDAO implements DAO<Kommentar>{
     public void delete(Kommentar entity) throws SQLException {
 
     }
+
+    public List<Kommentar> getKommentar(int year, Tag tag) throws SQLException {
+        return null;
+    }
+
 }

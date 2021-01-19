@@ -9,6 +9,7 @@ import java.sql.Date;
  */
 public class Tag {
 
+    private int tid;
     private Benutzer benutzer;
     private Date datum;
     private Woche woche;
@@ -16,6 +17,15 @@ public class Tag {
 
 
 
+
+
+    public void setTid(int id) {
+        this.tid = id;
+    }
+
+    public int getTid() {
+        return this.tid;
+    }
 
     public void setArt(String kind) {
         if (kind.equalsIgnoreCase("Arbeit")) {

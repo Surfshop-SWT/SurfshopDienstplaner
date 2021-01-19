@@ -40,16 +40,17 @@ public class Login extends HttpServlet {
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
                 Arbeitsplan ap = new Arbeitsplan();
                 for (Benutzer bn : user) {
-                    if (bn.getBenutzername().equals(uname)) {
-                        session.setAttribute("eingeloggterBenutzer", bn);
-                    }
                     List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
                     List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                     bn.setTage(buffer);
+                    if (bn.getBenutzername().equals(uname)) {
+                        session.setAttribute("eingeloggterBenutzer", bn);
+                    }
                 }
                 request.setAttribute("date", ap);
                 request.setAttribute("benutzer", user);
                 request.setAttribute("monat", ap.getMonat());
+                session.setAttribute("year", ap.getYear());
                 request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
             } else {
                 /* Fehlermeldung wenn die Logindaten nicht stimmen */

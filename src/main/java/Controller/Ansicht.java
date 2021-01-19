@@ -42,6 +42,7 @@ public class Ansicht extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        Benutzer benutzer = (Benutzer) session.getAttribute("eingeloggterBenutzer");
 
         if (session.getAttribute("username") == null) {
             response.sendRedirect("Login/Login.jsp");
@@ -57,6 +58,10 @@ public class Ansicht extends HttpServlet {
                         List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
                         List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                         bn.setTage(buffer);
+                        if (bn.getBid() == benutzer.getBid()) {
+                            session.setAttribute("eingeloggterBenutzer", bn);
+                            session.setAttribute("year", ap.getYear());
+                        }
                     }
                 } else {
                     int month = Integer.parseInt(request.getParameter("selectmonth"));
@@ -65,6 +70,10 @@ public class Ansicht extends HttpServlet {
                         List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
                         List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate(Integer.parseInt(request.getParameter("selectmonth"))).toString()) || d.getDatum().after(ap.getStartDate(Integer.parseInt(request.getParameter("selectmonth"))))).collect(Collectors.toList());
                         bn.setTage(buffer);
+                        if (bn.getBid() == benutzer.getBid()) {
+                            session.setAttribute("eingeloggterBenutzer", bn);
+                            session.setAttribute("year", ap.getYear());
+                        }
                     }
                 }
                 request.setAttribute("benutzer", user);

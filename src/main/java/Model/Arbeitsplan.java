@@ -63,4 +63,9 @@ public class Arbeitsplan {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         return new Date(cal.getTimeInMillis());
     }
+
+
+    public int getYear() {
+        return this.aktuellesDatum.toLocalDate().getYear();
+    }
 }
