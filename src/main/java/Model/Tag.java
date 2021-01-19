@@ -14,7 +14,7 @@ public class Tag {
     private Date datum;
     private Woche woche;
     private TagArt art;
-
+    private Kommentar kommentar = null;
 
 
 
@@ -59,5 +59,13 @@ public class Tag {
 
     public Benutzer getBenutzer() {
         return this.benutzer;
+    }
+
+    public void setKommentar(Kommentar comment) {
+        this.kommentar = comment;
+    }
+
+    public Kommentar getKommentar() {
+        return this.kommentar;
     }
 }

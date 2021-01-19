@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Benutzer;
+import Model.Kommentar;
 import Model.Tag;
 
 import java.sql.PreparedStatement;
@@ -45,9 +46,10 @@ public class TagDAO implements DAO<Tag> {
 
 
     public List<Tag> getDays(int year, Benutzer user) throws SQLException {
-        String query = "SELECT tid, datum, tagart, benutzer_bid FROM surfshop2.tag " +
-                "JOIN surfshop2.benutzer on benutzer.bid = tag.benutzer_bid " +
-                "WHERE YEAR(datum) =? and benutzer_bid=?";
+        String query = "SELECT tid, datum, tagart, benutzer_bid, kid, inhalt, tag_tid FROM tag " +
+        "LEFT JOIN benutzer on benutzer.bid = tag.benutzer_bid " +
+        "LEFT JOIN kommentar on kommentar.tag_tid = tag.tid " +
+        "WHERE YEAR(datum) =? and benutzer_bid=?";
         PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);
         ps.setInt(1, year);
         ps.setInt(2, user.getBid());
@@ -60,8 +62,16 @@ public class TagDAO implements DAO<Tag> {
             tag.setBenutzer(user);
             tag.setDatum(rs.getDate("datum"));
             tag.setArt(rs.getString("tagart"));
+            if (rs.getInt("kid") != 0) {
+                Kommentar kommentar = new Kommentar();
+                kommentar.setKid(rs.getInt("kid"));
+                kommentar.setBenutzer(user);
+                kommentar.setInhalt(rs.getString("inhalt"));
+                kommentar.setTag_id(rs.getInt("tid"));
+                kommentar.setTag(rs.getDate("datum"));
+                tag.setKommentar(kommentar);
+            }
             list.add(tag);
-
         }
         return list;
     }

@@ -17,7 +17,7 @@
 </head>
 <script src="${pageContext.request.contextPath}/Ansicht/Ansicht4.js" type="text/javascript">
 </script>
-<link href="${pageContext.request.contextPath}/Ansicht/Ansicht3.css"
+<link href="${pageContext.request.contextPath}/Ansicht/Ansicht4.css"
       rel="stylesheet" type="text/css">
 <body>
 
@@ -88,19 +88,19 @@
     <div id="printview" class="right-main">
         <body>
         <table>
-            <caption id="monatsAnsicht"></caption>
+            <caption id="monatsAnsicht">${monat} ${year}</caption>
             <tr class="table-head">
                 <tbody id="tableHeader0"></tbody>
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day ">${user.getTage()[0].getDatum()}</td>
-                <td class="day ${user.getTage()[1].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[2].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[3].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[4].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[5].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[6].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[0].getArt().toString().toLowerCase()}"><div class="${user.getTage()[0].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[1].getArt().toString().toLowerCase()}"><div class="${user.getTage()[1].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[2].getArt().toString().toLowerCase()}"><div class="${user.getTage()[2].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[3].getArt().toString().toLowerCase()}"><div class="${user.getTage()[3].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[4].getArt().toString().toLowerCase()}"><div class="${user.getTage()[4].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[5].getArt().toString().toLowerCase()}"><div class="${user.getTage()[5].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[6].getArt().toString().toLowerCase()}"><div class="${user.getTage()[6].getKommentar() != null ? "dot" : ""}"></div></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -113,13 +113,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day ${user.getTage()[7].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[8].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[9].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[10].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[11].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[12].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[13].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[7].getArt().toString().toLowerCase()}"><div class="${user.getTage()[7].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[8].getArt().toString().toLowerCase()}"><div class="${user.getTage()[8].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[9].getArt().toString().toLowerCase()}"><div class="${user.getTage()[9].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[10].getArt().toString().toLowerCase()}"><div class="${user.getTage()[10].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[11].getArt().toString().toLowerCase()}"><div class="${user.getTage()[11].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[12].getArt().toString().toLowerCase()}"><div class="${user.getTage()[12].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[13].getArt().toString().toLowerCase()}"><div class="${user.getTage()[13].getKommentar() != null ? "dot" : ""}"></div></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -132,13 +132,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day ${user.getTage()[14].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[15].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[16].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[17].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[18].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[19].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[20].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[14].getArt().toString().toLowerCase()}"><div class="${user.getTage()[14].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[15].getArt().toString().toLowerCase()}"><div class="${user.getTage()[15].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[16].getArt().toString().toLowerCase()}"><div class="${user.getTage()[16].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[17].getArt().toString().toLowerCase()}"><div class="${user.getTage()[17].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[18].getArt().toString().toLowerCase()}"><div class="${user.getTage()[18].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[19].getArt().toString().toLowerCase()}"><div class="${user.getTage()[19].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[20].getArt().toString().toLowerCase()}"><div class="${user.getTage()[20].getKommentar() != null ? "dot" : ""}"></div></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>
@@ -151,12 +151,12 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day ${user.getTage()[21].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[22].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[23].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[24].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[25].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[26].getArt().toString().toLowerCase()}"></td>
+                <td class="day ${user.getTage()[21].getArt().toString().toLowerCase()}"><div class="${user.getTage()[21].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[22].getArt().toString().toLowerCase()}"><div class="${user.getTage()[22].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[23].getArt().toString().toLowerCase()}"><div class="${user.getTage()[23].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[24].getArt().toString().toLowerCase()}"><div class="${user.getTage()[24].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[25].getArt().toString().toLowerCase()}"><div class="${user.getTage()[25].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[26].getArt().toString().toLowerCase()}"><div class="${user.getTage()[26].getKommentar() != null ? "dot" : ""}"></div></td>
                 <td class="day ">${user.getTage()[27].getDatum()}</td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
@@ -170,13 +170,13 @@
                 <c:forEach var="user" items="${benutzer}">
             <tr>
                 <td class="mitarbeiter">${user.vorname}, ${user.nachname}</td>
-                <td class="day ${user.getTage()[28].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[29].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[30].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[31].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[32].getArt().toString().toLowerCase()}"></td>
-                <td class="day ${user.getTage()[33].getArt().toString().toLowerCase()}"></td>
-                <td class="day "> ${user.getTage()[34].getDatum()}</td>
+                <td class="day ${user.getTage()[28].getArt().toString().toLowerCase()}"><div class="${user.getTage()[28].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[29].getArt().toString().toLowerCase()}"><div class="${user.getTage()[29].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[30].getArt().toString().toLowerCase()}"><div class="${user.getTage()[30].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[31].getArt().toString().toLowerCase()}"><div class="${user.getTage()[31].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[32].getArt().toString().toLowerCase()}"><div class="${user.getTage()[32].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[33].getArt().toString().toLowerCase()}"><div class="${user.getTage()[33].getKommentar() != null ? "dot" : ""}"></div></td>
+                <td class="day ${user.getTage()[34].getArt().toString().toLowerCase()}"><div class="${user.getTage()[34].getKommentar() != null ? "dot" : ""}"></div></td>
                 <td class="soll">6</td>
                 <td class="ist">4</td>
             </tr>

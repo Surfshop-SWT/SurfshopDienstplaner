@@ -5,7 +5,7 @@
 function printPageArea(areaID) {
     var printContent = document.getElementById(areaID);
     var WinPrint = window.open('', '', 'width=900,height=650');
-    WinPrint.document.write('<link href="/Ansicht/Ansicht3.css" rel="stylesheet" type="text/css">');
+    WinPrint.document.write('<link href="/Ansicht/Printview.css" rel="stylesheet" type="text/css">');
     WinPrint.document.write(printContent.innerHTML);
 }
 
