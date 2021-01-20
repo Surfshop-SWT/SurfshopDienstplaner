@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tim Lueneburg
-  Date: 15.01.2021
-  Time: 15:49
+  Date: 20.01.2021
+  Time: 02:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -34,21 +34,11 @@
 </div>
 
 <div class="main">
-    <form id="eingabeboxwrapper" action="${pageContext.request.contextPath}/kommentar" method="post">
-        <div class="textwrapper"><label><textarea id="kommentar" name="kommentar" cols="2" rows="10" placeholder="Kommentar setzen..."></textarea></label></div>
-        <p class="max-zeichen">Max. 300 Zeichen</p>
-        <div id="yesornowrapper">
-            <button id="abbrechen" type="button" name="submit" class="button" onclick="cancleComment()">Abbrechen
-            </button>
-            <button id="bestaetigen" type="submit" name="submit" class="button" value="submit">Bestätigen</button>
-        </div>
-    </form>
-    <form action="${pageContext.request.contextPath}/ansicht" method="get">
-        <div id="abbrechen-box">
-            <p class="abbrechen-text">Sicher, dass sie Abbrechen wollen?</p>
-            <button id="ja" type="submit" class="button">Ja</button>
-            <button id="nein" type="button" class="button" onclick="cancleComment()">Nein</button>
-        </div>
+    <form action="${pageContext.request.contextPath}/kommentar" method="post">
+    <div class="erfolg-box">
+        <p class="erfolg-text">Der Kommentar wurde erfolgreich gesetzt</p>
+        <button id="zurueck" type="submit" name="submit" value="back">Zurück</button>
+    </div>
     </form>
 </div>
 </body>

@@ -39,22 +39,31 @@ public class KommentarC extends HttpServlet {
         Arbeitsplan ap = new Arbeitsplan();
         int index = Integer.parseInt((String) session.getAttribute("date"));
         Tag tag = user.getTage().get(index);
-        try {
-            comment.setTag(tag.getDatum());
-            comment.setInhalt(request.getParameter("kommentar"));
-            comment.setBenutzer(user);
-            comment.setTag_id(tag.getTid());
-            kommentarDAO.save(comment);
-            List<Benutzer> users = benutzerDAO.getAllBenutzer();
-            request.setAttribute("monat", ap.getMonat());
-            for (Benutzer bn : users) {
-                List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
-                List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
-                bn.setTage(buffer);
-                request.setAttribute("benutzer", users);
+        if (request.getParameter("submit").equals("submit")) {
+            try {
+                comment.setTag(tag.getDatum());
+                comment.setInhalt(request.getParameter("kommentar"));
+                comment.setBenutzer(user);
+                comment.setTag_id(tag.getTid());
+                kommentarDAO.save(comment);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            request.getRequestDispatcher("Kommentar/KommentarErfolg.jsp").forward(request, response);
+        } else if (request.getParameter("submit").equals("back")) {
+            request.setAttribute("monat", ap.getMonat());
+            List<Benutzer> users = null;
+            try {
+                users = benutzerDAO.getAllBenutzer();
+                for (Benutzer bn : users) {
+                    List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
+                    List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
+                    bn.setTage(buffer);
+                    request.setAttribute("benutzer", users);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
     }
