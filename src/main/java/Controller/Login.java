@@ -46,23 +46,33 @@ public class Login extends HttpServlet {
             /* Prüfen ob die Anmeldedaten richtig sind (muss noch verfeinert werden) */
             if ((uname.equals("root") && pass.equals("root")) || benutzerDAO.checkLogin(uname, pass)) {
                 boolean admin = false;
-                List<Benutzer> user = benutzerDAO.getAllBenutzer();
+                if (uname.equals("root") && pass.equals("root")) {
+                    Benutzer root = new Benutzer();
+                    root.setBenutzername("root");
+                    root.setPasswort("root");
+                    root.setAdmin(true);
+                    admin = true;
+                    session.setAttribute("eingeloggterBenutzer", root);
+                }
+                List<Benutzer> users = benutzerDAO.getAllBenutzer();
                 Arbeitsplan ap = new Arbeitsplan();
-                for (Benutzer bn : user) {
+                for (Benutzer bn : users) {
                     List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
                     List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                     bn.setTage(buffer);
                     if (bn.getBenutzername().equals(uname)) {
                         /* Den Eingeloggten Benutzer als Session Objekt übergeben */
                         session.setAttribute("eingeloggterBenutzer", bn);
-                        if (bn.getAdmin()){
+                        if (bn.getAdmin()) {
                             admin = true;
                         }
                     }
                 }
-                request.setAttribute("ap", ap);
-                request.setAttribute("benutzer", user);
-                if (admin || (uname.equals("root") && pass.equals("root"))) {
+                session.setAttribute("ap", ap);
+                request.setAttribute("benutzer", users);
+                request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+                request.setAttribute("dropdown", ap.getMonat());
+                if (admin) {
                     request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp").forward(request, response);
@@ -77,7 +87,7 @@ public class Login extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect("Login/Login.jsp");
     }
 }

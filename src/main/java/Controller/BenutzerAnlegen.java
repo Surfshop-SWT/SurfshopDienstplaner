@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.BenutzerDAO;
 import DAO.TagDAO;
+import Model.Arbeitsplan;
 import Model.Benutzer;
 import Model.Tag;
 
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -87,20 +89,28 @@ public class BenutzerAnlegen extends HttpServlet {
 
         HttpSession session = request.getSession();
         Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
+        Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
 
         if (user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
         } else if (user.getAdmin()) {
             response.sendRedirect("BenutzerAnlegen/BenutzerAnlegen.jsp");
         } else {
-            List<Benutzer> allUser = new LinkedList<>();
+            List<Benutzer> users = new LinkedList<>();
             try {
-                allUser = benutzerDAO.getAllBenutzer();
+                users = benutzerDAO.getAllBenutzer();
+                request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+                request.setAttribute("dropdown", ap.getMonat());
+                for (Benutzer bn : users) {
+                    List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
+                    List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
+                    bn.setTage(buffer);
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
-            request.setAttribute("benutzer", allUser);
+            request.setAttribute("benutzer", users);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp");
             dispatcher.forward(request, response);
         }

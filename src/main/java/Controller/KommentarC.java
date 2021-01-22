@@ -33,6 +33,7 @@ public class KommentarC extends HttpServlet {
 
     /**
      * KommentarSetzen Funktion
+     *
      * @param request
      * @param response
      * @throws ServletException
@@ -46,6 +47,7 @@ public class KommentarC extends HttpServlet {
         Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
         int index = Integer.parseInt((String) session.getAttribute("tag"));
         Tag tag = user.getTage().get(index);
+
         /* Kommentar in der Datenbank speichern */
         if (request.getParameter("submit").equals("submit")) {
             try {
@@ -60,7 +62,8 @@ public class KommentarC extends HttpServlet {
             request.getRequestDispatcher("Kommentar/KommentarErfolg.jsp").forward(request, response);
             /* Die Tabellen für die Ansicht aus der Datenbank holen */
         } else if (request.getParameter("submit").equals("back")) {
-            request.setAttribute("monat", ap.getMonat());
+            request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+            request.setAttribute("dropdown", ap.getMonat());
             List<Benutzer> users = null;
             try {
                 users = benutzerDAO.getAllBenutzer();
@@ -68,20 +71,45 @@ public class KommentarC extends HttpServlet {
                     List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
                     List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                     bn.setTage(buffer);
-                    request.setAttribute("benutzer", users);
                 }
+                request.setAttribute("benutzer", users);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+            if (user.getAdmin()) {
+                request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp").forward(request, response);
+            }
         }
-        request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
-        if (session.getAttribute("username") == null) {
+        HttpSession session = request.getSession();
+        Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
+        List<Benutzer> users = null;
+        try {
+            users = benutzerDAO.getAllBenutzer();
+            Arbeitsplan ap = new Arbeitsplan();
+            for (Benutzer bn : users) {
+                List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
+                List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
+                bn.setTage(buffer);
+            }
+            request.setAttribute("benutzer", users);
+            request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+            request.setAttribute("dropdown", ap.getMonat());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        if (user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
+        } else if (user.getBenutzername().equals("root") && user.getPasswort().equals("root")) {
+            request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
+        } else if (!user.getAdmin() && request.getParameter("date") == null) {
+            request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp").forward(request, response);
         } else {
             session.setAttribute("tag", request.getParameter("date"));
             request.getRequestDispatcher("Kommentar/Kommentar.jsp").forward(request, response);

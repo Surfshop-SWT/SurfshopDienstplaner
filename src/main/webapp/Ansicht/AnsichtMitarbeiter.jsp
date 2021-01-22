@@ -34,7 +34,7 @@
             <div id="menu">
                 <ul>
                     <li class="topmenu selected">
-                        <a id="monatDropDown">${monat}</a>
+                        <a id="monatDropDown">${dropdown}</a>
                         <ul>
                             <li class="submenu">
                                 <button name="selectmonth" type="submit" value="0">Januar</button>
@@ -85,7 +85,7 @@
     <div id="printview" class="right-main">
         <body>
         <table>
-            <caption id="monatsAnsicht">${monat} ${year}</caption>
+            <caption id="monatsAnsicht">${monat}</caption>
             <tr class="table-head">
                 <tbody id="tableHeader0"></tbody>
                 <c:forEach var="user" items="${benutzer}">
