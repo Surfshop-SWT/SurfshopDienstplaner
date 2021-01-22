@@ -21,7 +21,7 @@ import java.util.List;
 public class BenutzerDAO implements DAO<Benutzer> {
 
     /**
-     * Einfügen eines Neuen Users in die Datenbank
+     * Einfügen eines Neuen {@link Benutzer} in die Datenbank
      *
      * @param entity der Benutzer
      * @return neu erstellte Benutzer
@@ -50,7 +50,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
     }
 
     /**
-     * Updated Einträge für den Benutzer in der Datenbank
+     * Updated Einträge für den {@link Benutzer} in der Datenbank
      *
      * @param entity der Benutzer
      * @throws SQLException
@@ -73,7 +73,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
     }
 
     /**
-     * Liefert uns einen User aus der Datenbank, anhand der ID
+     * Liefert uns einen {@link Benutzer} aus der Datenbank, anhand der ID
      *
      * @param id Benutzer ID
      * @return Benutzer
@@ -110,7 +110,7 @@ public class BenutzerDAO implements DAO<Benutzer> {
     }
 
     /**
-     * Löscht einen Benutzer Eintrag in der Datenbank
+     * Löscht einen {@link Benutzer} Eintrag in der Datenbank
      *
      * @param entity der Benutzer
      * @throws SQLException
@@ -163,6 +163,12 @@ public class BenutzerDAO implements DAO<Benutzer> {
 
     }
 
+    /**
+     * Liefert eine Liste von {@link Benutzer}
+     *
+     * @return
+     * @throws SQLException
+     */
     public List<Benutzer> getAllBenutzer() throws SQLException {
         String query = "select * from benutzer";
         PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(query);

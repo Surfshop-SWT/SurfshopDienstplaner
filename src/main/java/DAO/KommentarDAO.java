@@ -12,6 +12,13 @@ import java.sql.SQLException;
  */
 public class KommentarDAO implements DAO<Kommentar>{
 
+    /**
+     * Einfügen eines neuen {@link Kommentar} in die Datenbank
+     *
+     * @param entity
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Kommentar save(Kommentar entity) throws SQLException {
         String query = "insert into kommentar(inhalt, tag_tid)" +

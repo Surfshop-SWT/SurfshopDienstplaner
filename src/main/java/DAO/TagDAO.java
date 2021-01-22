@@ -17,6 +17,12 @@ import java.util.List;
  */
 public class TagDAO implements DAO<Tag> {
 
+    /**
+     * Einfügen eines {@link Tag} in die Datenbank
+     * @param entity
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Tag save(Tag entity) throws SQLException {
         String query = "insert into tag(datum, tagart, benutzer_bid)" +
@@ -44,7 +50,14 @@ public class TagDAO implements DAO<Tag> {
 
     }
 
-
+    /**
+     * Liefert eine Liste von {@link Tag} für ein bestimmtes Jahr für einen {@link Benutzer}
+     *
+     * @param year
+     * @param user
+     * @return
+     * @throws SQLException
+     */
     public List<Tag> getDays(int year, Benutzer user) throws SQLException {
         String query = "SELECT tid, datum, tagart, benutzer_bid, kid, inhalt, tag_tid FROM tag " +
         "LEFT JOIN benutzer on benutzer.bid = tag.benutzer_bid " +
