@@ -43,8 +43,8 @@ public class KommentarC extends HttpServlet {
         HttpSession session = request.getSession();
         Kommentar comment = new Kommentar();
         Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
-        Arbeitsplan ap = new Arbeitsplan();
-        int index = Integer.parseInt((String) session.getAttribute("date"));
+        Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
+        int index = Integer.parseInt((String) session.getAttribute("tag"));
         Tag tag = user.getTage().get(index);
         /* Kommentar in der Datenbank speichern */
         if (request.getParameter("submit").equals("submit")) {
@@ -83,7 +83,7 @@ public class KommentarC extends HttpServlet {
         if (session.getAttribute("username") == null) {
             response.sendRedirect("Login/Login.jsp");
         } else {
-            session.setAttribute("date", request.getParameter("date"));
+            session.setAttribute("tag", request.getParameter("date"));
             request.getRequestDispatcher("Kommentar/Kommentar.jsp").forward(request, response);
         }
     }

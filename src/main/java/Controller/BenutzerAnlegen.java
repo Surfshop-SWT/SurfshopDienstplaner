@@ -5,6 +5,7 @@ import DAO.TagDAO;
 import Model.Benutzer;
 import Model.Tag;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,11 +86,23 @@ public class BenutzerAnlegen extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
 
-        if (session.getAttribute("username") == null) {
+        if (user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
-        } else {
+        } else if (user.getAdmin()) {
             response.sendRedirect("BenutzerAnlegen/BenutzerAnlegen.jsp");
+        } else {
+            List<Benutzer> allUser = new LinkedList<>();
+            try {
+                allUser = benutzerDAO.getAllBenutzer();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            request.setAttribute("benutzer", allUser);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

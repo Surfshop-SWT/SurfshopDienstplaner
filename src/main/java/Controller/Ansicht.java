@@ -49,7 +49,7 @@ public class Ansicht extends HttpServlet {
 
             try {
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
-                Arbeitsplan ap = new Arbeitsplan();
+                Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
                 /* Es wurde keine spezieller Monat gewählt, zeigt den aktuellen Monat an */
                 if (request.getParameter("selectmonth") == null || request.getParameter("selectmonth").equalsIgnoreCase("Arbeitsplanansicht")) {
                     request.setAttribute("monat", ap.getMonat());

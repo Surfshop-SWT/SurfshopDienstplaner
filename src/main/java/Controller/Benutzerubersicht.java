@@ -39,10 +39,11 @@ public class Benutzerubersicht extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
 
-        if (session.getAttribute("username") == null) {
+        if (user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
-        } else {
+        } else if (user.getAdmin()) {
             /* Den Benutzer Objekt an die JSP geben */
             List<Benutzer> allUser = new LinkedList<>();
             try {
@@ -53,6 +54,17 @@ public class Benutzerubersicht extends HttpServlet {
 
             request.setAttribute("benutzer", allUser);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Benutzerubersicht/Benutzerubersicht.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            List<Benutzer> allUser = new LinkedList<>();
+            try {
+                allUser = benutzerDAO.getAllBenutzer();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            request.setAttribute("benutzer", allUser);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp");
             dispatcher.forward(request, response);
         }
     }

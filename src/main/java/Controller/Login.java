@@ -37,14 +37,15 @@ public class Login extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+
         String uname = request.getParameter("username");
         String pass = request.getParameter("password");
+
         try {
             /* Prüfen ob die Anmeldedaten richtig sind (muss noch verfeinert werden) */
             if ((uname.equals("root") && pass.equals("root")) || benutzerDAO.checkLogin(uname, pass)) {
                 boolean admin = false;
-                HttpSession session = request.getSession();
-                session.setAttribute("username", uname);
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
                 Arbeitsplan ap = new Arbeitsplan();
                 for (Benutzer bn : user) {
@@ -59,10 +60,8 @@ public class Login extends HttpServlet {
                         }
                     }
                 }
-                request.setAttribute("date", ap);
+                request.setAttribute("ap", ap);
                 request.setAttribute("benutzer", user);
-                request.setAttribute("monat", ap.getMonat());
-                session.setAttribute("year", ap.getYear());
                 if (admin || (uname.equals("root") && pass.equals("root"))) {
                     request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
                 } else {
