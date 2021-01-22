@@ -18,22 +18,37 @@ public class Kommentar {
 
     /*---------------------------- Getter und Setter ----------------------------*/
 
+    /**
+     * Setzt die Kommentar Id
+     * @param id
+     */
     public void setKid(int id) {
         this.kid = id;
     }
 
+    /**
+     * Liefer die Kommentar Id
+     * @return
+     */
     public int getKid() {
         return this.kid;
     }
 
+    /**
+     * Setzt den {@link Benutzer} des Kommentars
+     * @param user
+     */
     public void setBenutzer(Benutzer user) {
         this.benutzer = user;
     }
 
+    /**
+     * Liefert den {@link Benutzer} des Kommentars
+     * @return
+     */
     public Benutzer getBenutzer() {
         return this.benutzer;
     }
-
 
     /**
      * Setzt den Inhalt des Kommentars
@@ -52,7 +67,7 @@ public class Kommentar {
     }
 
     /**
-     * Setzt den Tag wo das Kommentar gesetzt wurde
+     * Setzt das Datum wo das Kommentar gesetzt wurde
      * @param tag
      */
     public void setTag(Date tag) {
@@ -60,17 +75,25 @@ public class Kommentar {
     }
 
     /**
-     * Liefert den Tag des Kommentars
+     * Liefert das Daum des Kommentars
      * @return
      */
     public Date getDataum() {
         return this.datum;
     }
 
+    /**
+     * Setzt die Id des {@link Tag}
+     * @param id
+     */
     public void setTag_id(int id) {
         this.tag_id = id;
     }
 
+    /**
+     * Liefer die Id des {@link Tag}
+     * @return
+     */
     public int getTag_id() {
         return this.tag_id;
     }

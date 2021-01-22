@@ -31,6 +31,13 @@ public class KommentarC extends HttpServlet {
     private final KommentarDAO kommentarDAO = new KommentarDAO();
     private final TagDAO tagDAO = new TagDAO();
 
+    /**
+     * KommentarSetzen Funktion
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
@@ -39,6 +46,7 @@ public class KommentarC extends HttpServlet {
         Arbeitsplan ap = new Arbeitsplan();
         int index = Integer.parseInt((String) session.getAttribute("date"));
         Tag tag = user.getTage().get(index);
+        /* Kommentar in der Datenbank speichern */
         if (request.getParameter("submit").equals("submit")) {
             try {
                 comment.setTag(tag.getDatum());
@@ -50,6 +58,7 @@ public class KommentarC extends HttpServlet {
                 throwables.printStackTrace();
             }
             request.getRequestDispatcher("Kommentar/KommentarErfolg.jsp").forward(request, response);
+            /* Die Tabellen für die Ansicht aus der Datenbank holen */
         } else if (request.getParameter("submit").equals("back")) {
             request.setAttribute("monat", ap.getMonat());
             List<Benutzer> users = null;

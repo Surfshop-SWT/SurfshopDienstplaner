@@ -29,13 +29,9 @@ public class Benutzer {
     private boolean admin;
 
     private List<Tag> tag;
-    private List<Kommentar> kommentar;
 
     public Benutzer() {
         this.tag = new LinkedList<>();
-        this.kommentar = new LinkedList<>();
-
-
     }
 
 
@@ -224,7 +220,7 @@ public class Benutzer {
     }
 
     /**
-     * Setzen ob der USER ein ADMIN ist oder nicht
+     * Setzen ob der USER ein ADMIN ist oder nicht anhand eines Strings
      *
      * @param role
      */
@@ -236,6 +232,11 @@ public class Benutzer {
         }
     }
 
+    /**
+     * Setzen ob der USER ein ADMIN ist oder nicht
+     *
+     * @param role
+     */
     public void setAdmin(boolean role) {
         this.admin = role;
     }
@@ -254,6 +255,9 @@ public class Benutzer {
         else return "Mitarbeiter";
     }
 
+    /**
+     * Methode zum erstellen eines Jahres für den neu angelegten Benutzer
+     */
     public void createOneYear() {
         LocalDate startDate = LocalDate.of(2021,1,1);
         LocalDate endDate = startDate.plusYears(1);
@@ -267,10 +271,18 @@ public class Benutzer {
         }
     }
 
+    /**
+     * Setzt die Liste der {@link Tag}
+     * @param days
+     */
     public void setTage(List<Tag> days) {
         this.tag = days;
     }
 
+    /**
+     * Liefer die Liste der {@link Tag}
+     * @return
+     */
     public List<Tag> getTage() {
         return this.tag;
     }

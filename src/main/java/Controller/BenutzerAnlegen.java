@@ -27,6 +27,13 @@ public class BenutzerAnlegen extends HttpServlet {
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
     private final TagDAO tagDAO = new TagDAO();
 
+    /**
+     * Registrieren eines neuen Benutzers, mit der Post Methode
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //Den Charset für die request setzen damit Umlaute genommen werden (Standard: ISO_8859_1) Wir brauchen UTF-8

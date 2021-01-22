@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tim Lueneburg
-  Date: 06.01.2021
-  Time: 15:01
+  Date: 22.01.2021
+  Time: 14:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -23,9 +23,6 @@
 
 <div class="header">
     <div class="arbeitsplan"><input class="knopf choosen" type="submit" value="ARBEITSPLANANSICHT"></div>
-    <form action="${pageContext.request.contextPath}/benutzerubersicht" method="get" accept-charset="utf-8">
-        <div class="benutzer"><input class="knopf" type="submit" value="BENUTZERÜBERSICHT"></div>
-    </form>
     <div class="benutzerkonto"><input class="knopf" type="submit" value="BENUTZERKONTO"></div>
     <form action="${pageContext.request.contextPath}/logout" method="get">
         <div class="logout"><input class="knopf" type="submit" value="ABMELDEN"></div>

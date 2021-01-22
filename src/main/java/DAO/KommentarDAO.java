@@ -1,11 +1,9 @@
 package DAO;
 
 import Model.Kommentar;
-import Model.Tag;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,9 +38,4 @@ public class KommentarDAO implements DAO<Kommentar>{
     public void delete(Kommentar entity) throws SQLException {
 
     }
-
-    public List<Kommentar> getKommentar(int year, Tag tag) throws SQLException {
-        return null;
-    }
-
 }

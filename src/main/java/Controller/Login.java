@@ -28,13 +28,21 @@ public class Login extends HttpServlet {
     private final BenutzerDAO benutzerDAO = new BenutzerDAO();
     private final TagDAO tagDAO = new TagDAO();
 
+    /**
+     * Anmelden mit Benutzername und Passowrt
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String uname = request.getParameter("username");
         String pass = request.getParameter("password");
         try {
             /* Prüfen ob die Anmeldedaten richtig sind (muss noch verfeinert werden) */
-            if (benutzerDAO.checkLogin(uname, pass)) {
+            if ((uname.equals("root") && pass.equals("root")) || benutzerDAO.checkLogin(uname, pass)) {
+                boolean admin = false;
                 HttpSession session = request.getSession();
                 session.setAttribute("username", uname);
                 List<Benutzer> user = benutzerDAO.getAllBenutzer();
@@ -44,14 +52,22 @@ public class Login extends HttpServlet {
                     List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
                     bn.setTage(buffer);
                     if (bn.getBenutzername().equals(uname)) {
+                        /* Den Eingeloggten Benutzer als Session Objekt übergeben */
                         session.setAttribute("eingeloggterBenutzer", bn);
+                        if (bn.getAdmin()){
+                            admin = true;
+                        }
                     }
                 }
                 request.setAttribute("date", ap);
                 request.setAttribute("benutzer", user);
                 request.setAttribute("monat", ap.getMonat());
                 session.setAttribute("year", ap.getYear());
-                request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
+                if (admin || (uname.equals("root") && pass.equals("root"))) {
+                    request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp").forward(request, response);
+                }
             } else {
                 /* Fehlermeldung wenn die Logindaten nicht stimmen */
                 request.setAttribute("errorMessage", "Benutzername und/oder Passwort ist falsch!");

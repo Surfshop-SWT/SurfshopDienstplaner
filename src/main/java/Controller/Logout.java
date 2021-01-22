@@ -16,6 +16,13 @@ import java.io.IOException;
 @WebServlet(name = "Logout", value="/logout")
 public class Logout extends HttpServlet {
 
+    /**
+     * Abmelden Funktion
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("username");
