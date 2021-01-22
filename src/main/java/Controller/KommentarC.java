@@ -104,7 +104,7 @@ public class KommentarC extends HttpServlet {
             throwables.printStackTrace();
         }
 
-        if (user.getBenutzername() == null) {
+        if (user == null || user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
         } else if (user.getBenutzername().equals("root") && user.getPasswort().equals("root")) {
             request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);

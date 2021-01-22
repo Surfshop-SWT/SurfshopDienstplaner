@@ -45,7 +45,7 @@ public class Ansicht extends HttpServlet {
         Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
         Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
 
-        if (user.getBenutzername() == null) {
+        if (user == null || user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
         } else {
 
