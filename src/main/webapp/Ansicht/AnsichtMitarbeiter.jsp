@@ -84,8 +84,8 @@
     </div>
     <div id="printview" class="right-main">
         <body>
+        <caption id="monatsAnsicht">${monat}</caption>
         <table>
-            <caption id="monatsAnsicht">${monat}</caption>
             <tr class="table-head">
                 <tbody id="tableHeader0"></tbody>
                 <c:forEach var="user" items="${benutzer}">
