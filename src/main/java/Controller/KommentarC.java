@@ -42,11 +42,11 @@ public class KommentarC extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        Kommentar comment = new Kommentar();
         Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
         Arbeitsplan ap = (Arbeitsplan) session.getAttribute("ap");
         int index = Integer.parseInt((String) session.getAttribute("tag"));
         Tag tag = user.getTage().get(index);
+        Kommentar comment = new Kommentar(tag);
 
         /* Kommentar in der Datenbank speichern */
         if (request.getParameter("submit").equals("submit")) {
@@ -54,7 +54,6 @@ public class KommentarC extends HttpServlet {
                 comment.setTag(tag.getDatum());
                 comment.setInhalt(request.getParameter("kommentar"));
                 comment.setBenutzer(user);
-                comment.setTag_id(tag.getTid());
                 kommentarDAO.save(comment);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

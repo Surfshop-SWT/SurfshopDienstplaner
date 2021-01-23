@@ -15,6 +15,10 @@ public class Kommentar {
     private Benutzer benutzer;
     private int tag_id;
 
+    public Kommentar(Tag day) {
+        this.tag_id = day.getTid();
+    }
+
 
     /*---------------------------- Getter und Setter ----------------------------*/
 

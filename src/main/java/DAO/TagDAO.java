@@ -76,11 +76,10 @@ public class TagDAO implements DAO<Tag> {
             tag.setDatum(rs.getDate("datum"));
             tag.setArt(rs.getString("tagart"));
             if (rs.getInt("kid") != 0) {
-                Kommentar kommentar = new Kommentar();
+                Kommentar kommentar = new Kommentar(tag);
                 kommentar.setKid(rs.getInt("kid"));
                 kommentar.setBenutzer(user);
                 kommentar.setInhalt(rs.getString("inhalt"));
-                kommentar.setTag_id(rs.getInt("tid"));
                 kommentar.setTag(rs.getDate("datum"));
                 tag.setKommentar(kommentar);
             }
