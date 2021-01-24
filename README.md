@@ -87,8 +87,8 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-### Information
-#### Login-Daten
+# Information
+## Login-Daten
 
 Benutername: root
 Passwort: root
