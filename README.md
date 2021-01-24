@@ -1,5 +1,11 @@
 # Wichtig
 
+### In IntelliJ
+Als Server nutzen wir Tomcat 9: <https://tomcat.apache.org/download-90.cgi>
+Wichtig hierbei ist bei den Edit Configurations folgendes:
+![alt text](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/tomcatint.png)
+![alt text](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/tomcatdeploy.png)
+
 ### Für erstellen der Datenbank in MYSQL
 
 -- MySQL Workbench Forward Engineering
