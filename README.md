@@ -11,7 +11,7 @@ Im Reiter Deployment:</br>
 
 ### Für erstellen der Datenbank in MYSQL
 </br>
-[a link](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/MYSQL.txt)
+![a link](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/MYSQL.txt)
 
 
 # Information
