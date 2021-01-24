@@ -41,10 +41,10 @@ public class Login extends HttpServlet {
 
         String uname = request.getParameter("username");
         String pass = request.getParameter("password");
-
         try {
+            boolean checkLogin = benutzerDAO.checkLogin(uname, pass);
             /* Prüfen ob die Anmeldedaten richtig sind (muss noch verfeinert werden) */
-            if ((uname.equals("root") && pass.equals("root")) || benutzerDAO.checkLogin(uname, pass)) {
+            if ((uname.equals("root") && pass.equals("root")) || checkLogin) {
                 boolean admin = false;
                 if (uname.equals("root") && pass.equals("root")) {
                     Benutzer root = new Benutzer();
@@ -71,6 +71,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("ap", ap);
                 request.setAttribute("benutzer", users);
                 request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+                request.setAttribute("monatindex", ap.getMonatValue());
                 request.setAttribute("dropdown", ap.getMonat());
                 if (admin) {
                     request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);

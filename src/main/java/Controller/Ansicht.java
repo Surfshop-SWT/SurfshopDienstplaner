@@ -54,6 +54,7 @@ public class Ansicht extends HttpServlet {
                 /* Es wurde keine spezieller Monat gewählt, zeigt den aktuellen Monat an */
                 if (request.getParameter("selectmonth") == null || request.getParameter("selectmonth").equalsIgnoreCase("Arbeitsplanansicht")) {
                     request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+                    request.setAttribute("monatindex", ap.getMonatValue());
                     request.setAttribute("dropdown", ap.getMonat());
                     for (Benutzer bn : users) {
                         List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);
@@ -66,7 +67,9 @@ public class Ansicht extends HttpServlet {
                     /* Bestimmter Monat gewählt der Angezeigt werden soll */
                 } else {
                     int month = Integer.parseInt(request.getParameter("selectmonth"));
+                    session.setAttribute("monat", month);
                     request.setAttribute("monat", String.format("%s %s", ap.getMonat(month), ap.getYear()));
+                    request.setAttribute("monatindex", month);
                     request.setAttribute("dropdown", ap.getMonat(month));
                     for (Benutzer bn : users) {
                         List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear() ,bn);

@@ -2,8 +2,6 @@ package Model;
 
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,11 +18,9 @@ public class Arbeitsplan {
 
 
     private Date aktuellesDatum;
-    private List<Tag> tage;
 
 
     public Arbeitsplan() {
-        this.tage = new LinkedList<>();
         this.aktuellesDatum = new Date(System.currentTimeMillis());
     }
 
@@ -52,6 +48,14 @@ public class Arbeitsplan {
     public String getMonat() {
         int month = this.aktuellesDatum.toLocalDate().getMonthValue();
         return months[month - 1];
+    }
+
+    /**
+     * Liefert die Nummer des aktuellen Monats
+     * @return
+     */
+    public int getMonatValue() {
+        return this.aktuellesDatum.toLocalDate().getMonthValue() - 1;
     }
 
     /**

@@ -235,14 +235,6 @@ td {
     display:none;
 }
 
-.day-word:hover .day-menu {
-    display:block;
-    position:absolute;
-    list-style: none;
-    margin-left:-40px;
-    margin-top:3px;
-}
-
 .day-menu li{
     font-size: 12px;
     padding:4px;

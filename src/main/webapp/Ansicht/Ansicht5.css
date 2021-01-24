@@ -11,13 +11,14 @@ a {
 }
 
 .header {
-    margin-top:-20px;
+    margin-top: 0;
     background-color: #645ff8;
-    padding: 22px 20px 10px 20px;
-    height:36px;
-    width:100%;
-    position: fixed;
+    padding: 16px 20px 16px 20px;
+    height: 52px;
+    width: 100%;
+    position: relative;
 }
+
 .arbeitsplan,
 .benutzer,
 .benutzerkonto,
@@ -46,24 +47,6 @@ a {
 .choosen {
     color: #1a1a1a;
 }
-.main {
-    margin-top:20px;
-}
-.left-main {
-    position: fixed;
-    margin-top:50px;
-    float: left;
-    width:20%;
-    height:500px;
-}
-
-.right-main {
-    margin-top:50px;
-    float:right;
-    /*border:2px solid green;*/
-    width:78%;
-    margin-right:10px;
-}
 
 table {
     width:100%;
@@ -73,6 +56,7 @@ table {
     margin-bottom: 20px;
 }
 caption {
+    caption-side: top;
     text-align: left;
     margin-left: 10px;
     font-weight: bold;
@@ -106,6 +90,7 @@ td {
     background-color: #90f78a;
 
 }
+
 .frei:before {
     content: "Frei";
 }
@@ -126,14 +111,14 @@ td {
     display: inline-block;
     background-color: yellow;
     margin-top: -8px;
-    margin-left:25px;
+    margin-left:0.5%;
     position: absolute;
 }
 
 #menu {
-    font-size:12px;
-    position:relative;
-    margin-left:30px;
+    margin-top: 46px;
+    font-size: 12px;
+    position: relative;
 }
 
 #sub-menu {
@@ -156,6 +141,7 @@ td {
 
 .topmenu a,
 .topmenu button{
+    font-size: 15px;
     float:left;
     width:100%;
     text-align:center;
@@ -180,7 +166,7 @@ td {
 
 .submenu a,
 .submenu button{
-    font-size:12px;
+    font-size:15px;
     width:100%;
     position:relative;
     clear:both;
@@ -206,21 +192,22 @@ td {
     background-color: #d1d4ff;
 }
 
+.buffer {
+    margin-top: 500px;
+}
+
 .temp {
-    position: relative;
-    width:220px;
+    position: initial;
+    width:100%;
     height:200px;
-    /*border:2px solid blue;*/
-    margin-top:500px;
 }
 .temp p {
-    margin-left:30px;
     font-size: 17px;
     font-weight:bold;
 }
 /* Button Design für Abbrechen und Bestätigen */
 .button {
-    width: 170px;
+    width: 100%;
     height: 40px;
     font-size: 0.9em;
     background-color: #1f42d4;
@@ -228,7 +215,7 @@ td {
     color: #f1f3f8;
     border-radius: 30px;
     border: black 2px solid;
-    margin-left:30px;
+    /*margin-left:30px;*/
 }
 
 /* Hover Funktion ändern der Farbe und Pointer */
@@ -239,6 +226,7 @@ td {
 }
 
 .day-menu {
+    z-index: 2;
     display:none;
 }
 
@@ -259,5 +247,7 @@ td {
     margin-top:-1px;
 }
 .day-menu .knopf {
+    font-weight: bold;
+    font-size: 14px;
     color:black;
 }

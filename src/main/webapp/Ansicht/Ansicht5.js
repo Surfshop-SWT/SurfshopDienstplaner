@@ -55,11 +55,11 @@ function Kalender(month, year) {
 
 window.onload = () => {
     if (!new URLSearchParams(window.location.search).has('selectmonth')) {
-        createTable(dateMonth);
+        createTable(monatindex);
     } else if (new URLSearchParams(window.location.search).get('selectmonth') === "ARBEITSPLANANSICHT") {
-        createTable(dateMonth);
+        createTable(monatindex);
     } else {
-        createTable(parseInt(new URLSearchParams(window.location.search).get('selectmonth')));
+        createTable(monatindex);
     }
 }
 

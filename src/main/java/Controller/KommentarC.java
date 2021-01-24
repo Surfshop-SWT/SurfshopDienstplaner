@@ -63,6 +63,7 @@ public class KommentarC extends HttpServlet {
         } else if (request.getParameter("submit").equals("back")) {
             request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
             request.setAttribute("dropdown", ap.getMonat());
+            request.setAttribute("monatindex", ap.getMonatValue());
             List<Benutzer> users = null;
             try {
                 users = benutzerDAO.getAllBenutzer();
@@ -87,27 +88,50 @@ public class KommentarC extends HttpServlet {
 
         HttpSession session = request.getSession();
         Benutzer user = (Benutzer) session.getAttribute("eingeloggterBenutzer");
+        Integer monat = (Integer) session.getAttribute("monat");
+        Integer index = Integer.parseInt(request.getParameter("date"));
         List<Benutzer> users = null;
+        boolean commentSet = false;
         try {
             users = benutzerDAO.getAllBenutzer();
             Arbeitsplan ap = new Arbeitsplan();
-            for (Benutzer bn : users) {
-                List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
-                List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
-                bn.setTage(buffer);
+            if (monat == null) {
+                for (Benutzer bn : users) {
+                    List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
+                    List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate().toString()) || d.getDatum().after(ap.getStartDate())).collect(Collectors.toList());
+                    bn.setTage(buffer);
+                    if (bn.getBid() == user.getBid() && bn.getTage().get(index).getKommentar() != null) {
+                        commentSet = true;
+                    }
+                    request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
+                    request.setAttribute("dropdown", ap.getMonat());
+                    request.setAttribute("monatindex", ap.getMonatValue());
+                    request.setAttribute("benutzer", users);
+                }
+                /* Bestimmter Monat gewählt der Angezeigt werden soll */
+            } else {
+                for (Benutzer bn : users) {
+                    List<Tag> days = tagDAO.getDays(ap.getAktuellesDatum().toLocalDate().getYear(), bn);
+                    List<Tag> buffer = days.stream().filter(d -> (d.getBenutzer().getBid() == (bn.getBid())) && d.getDatum().toString().equals(ap.getStartDate(monat).toString()) || d.getDatum().after(ap.getStartDate(monat))).collect(Collectors.toList());
+                    bn.setTage(buffer);
+                    if (bn.getBid() == user.getBid() && bn.getTage().get(index).getKommentar() != null) {
+                        commentSet = true;
+                    }
+                }
+                request.setAttribute("benutzer", users);
+                request.setAttribute("monat", String.format("%s %s", ap.getMonat(monat), ap.getYear()));
+                request.setAttribute("monatindex", monat);
+                request.setAttribute("dropdown", ap.getMonat(monat));
             }
-            request.setAttribute("benutzer", users);
-            request.setAttribute("monat", String.format("%s %s", ap.getMonat(), ap.getYear()));
-            request.setAttribute("dropdown", ap.getMonat());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         if (user == null || user.getBenutzername() == null) {
             response.sendRedirect("Login/Login.jsp");
-        } else if (user.getBenutzername().equals("root") && user.getPasswort().equals("root")) {
+        } else if ((commentSet && user.getAdmin()) || ((user.getAdmin() && index == null) || user.getBenutzername().equals("root") && user.getPasswort().equals("root"))) {
             request.getRequestDispatcher("Ansicht/Ansicht.jsp").forward(request, response);
-        } else if (!user.getAdmin() && request.getParameter("date") == null) {
+        } else if ((commentSet && !user.getAdmin()) || (!user.getAdmin() && index == null)) {
             request.getRequestDispatcher("Ansicht/AnsichtMitarbeiter.jsp").forward(request, response);
         } else {
             session.setAttribute("tag", request.getParameter("date"));
