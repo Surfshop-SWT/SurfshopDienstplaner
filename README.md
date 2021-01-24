@@ -10,7 +10,7 @@ Im Reiter Deployment:</br>
 ![alt text](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/tomcatdeploy.png)</br>
 
 ### Für erstellen der Datenbank in MYSQL
-[Link MYSQL Schema Creation](/MYSQL)
+[MYSQL Schema Creation](/MYSQL)
 
 
 # Information
