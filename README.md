@@ -1,7 +1,7 @@
 # Wichtig
 
 ### In IntelliJ
-Als Server nutzen wir Tomcat 9: <https://tomcat.apache.org/download-90.cgi>
+Als Server nutzen wir Tomcat 9: <https://tomcat.apache.org/download-90.cgi></br>
 Wichtig hierbei ist bei den Edit Configurations folgendes:
 Im Reiter Server:
 ![alt text](https://github.com/Surfshop-SWT/SurfshopDienstplaner/blob/master/tomcatint.png)
