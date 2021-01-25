@@ -114,6 +114,8 @@ textarea {
 }
 
 .erfolg-text {
+    font-weight: bold;
+    font-size: 30px;
     color: #008507;
 }
 #zurueck {

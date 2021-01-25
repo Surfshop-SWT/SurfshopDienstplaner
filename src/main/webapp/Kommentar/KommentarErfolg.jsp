@@ -16,7 +16,7 @@
 </head>
 <script src="${pageContext.request.contextPath}/Kommentar/Kommentar.js" type="text/javascript">
 </script>
-<link href="${pageContext.request.contextPath}/Kommentar/Kommentar4.css"
+<link href="${pageContext.request.contextPath}/Kommentar/Kommentar5.css"
       rel="stylesheet" type="text/css">
 <body>
 
