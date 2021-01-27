@@ -18,41 +18,9 @@ const months = ["Januar", "Februar", "März", "April", "Mai", "Juni",
         "Juli", "August", "September", "Oktober", "November", "Dezember"],
     Tag = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
 
-
-Kalender(dateMonth, dateYear);
-
 /**
- * Funktion zum Erstellen eines Kalenders für die einzelnen Kalenderwochen
- * @param month
- * @param year
- * @constructor
+ * Beim Laden des Fensters werden die Tabellen mit den KW´s erstellt
  */
-function Kalender(month, year) {
-
-    const today = new Date();
-    let dayToday = -1;
-    if ((today.getFullYear() === year) && (today.getMonth() + 1 === month))
-        dayToday = today.getDate();
-
-    const time = new Date(year, month - 1, 1);
-    const start = (time.getDay() + 6) % 7;
-
-// die meisten Monate haben 31 Tage
-    let stop = 31;
-
-// ...April (4), Juni (6), September (9) und November (11) haben nur 30 Tage
-    if (month === 4 || month === 6 || month === 9 || month === 11) --stop;
-
-// der Februar nur 28 Tage
-    if (month === 2) {
-        stop = stop - 3;
-        // außer in Schaltjahren
-        if (year % 4 === 0) stop++;
-        if (year % 100 === 0) stop--;
-        if (year % 400 === 0) stop++;
-    }
-}
-
 window.onload = () => {
     if (!new URLSearchParams(window.location.search).has('selectmonth')) {
         createTable(monatindex);

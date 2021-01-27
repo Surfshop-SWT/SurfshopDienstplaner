@@ -12,3 +12,19 @@ function cancleComment() {
         div2.style.display = "block";
     }
 }
+
+window.onload = function() {
+    commentLength();
+}
+
+function commentLength() {
+    document.getElementById('bestaetigen').disabled = false;
+    console.log(document.getElementById("kommentar").value.length || document.getElementById("kommentar").value.length < 1);
+    if(document.getElementById("kommentar").value.length === 0) {
+        document.getElementById('bestaetigen').disabled = true;
+    } else if(document.getElementById("kommentar").value.length > 300) {
+        document.getElementById('bestaetigen').disabled = true;
+        document.getElementById('kommentar').style.borderColor = 'red';
+    }
+    return true;
+}
