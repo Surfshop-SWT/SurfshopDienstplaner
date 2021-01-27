@@ -13,16 +13,11 @@ function cancleComment() {
     }
 }
 
-window.onload = function() {
-    commentLength();
-}
-
 function commentLength() {
+    document.getElementById('kommentar').style.borderColor = 'black';
     document.getElementById('bestaetigen').disabled = false;
-    console.log(document.getElementById("kommentar").value.length || document.getElementById("kommentar").value.length < 1);
-    if(document.getElementById("kommentar").value.length === 0) {
-        document.getElementById('bestaetigen').disabled = true;
-    } else if(document.getElementById("kommentar").value.length > 300) {
+    console.log(document.getElementById("kommentar").value.length);
+    if(document.getElementById("kommentar").value.length > 300 || document.getElementById("kommentar").value.length < 1) {
         document.getElementById('bestaetigen').disabled = true;
         document.getElementById('kommentar').style.borderColor = 'red';
     }
